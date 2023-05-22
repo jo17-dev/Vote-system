@@ -20,3 +20,15 @@ Route::get('/', function () {
 Route::get('/home', function(){
     return view("home.layout");
 });
+
+Route::get("/dashboard", function(){
+    return view("dashboard.dashboard");
+});
+
+Route::get("/sign", function(){
+    return view("home.signin-signup");
+});
+
+Route::get('/vote', function(){
+    return view("vote.actualite");
+})->name('vote');

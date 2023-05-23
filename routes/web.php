@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,20 @@ Route::get('/', function () {
 Route::get('/home', function(){
     return view("home.layout");
 });
+
 Route::get('/profil', function(){
     return view("home.profil");
 });
+
+Route::get("/dashboard", function(){
+    return view("dashboard.dashboard");
+});
+
+// Route::get("/sign", [MainController::class, 'login']);
+Route::get("/home/signin-signup", [MainController::class, 'register'])->name('home.signin-signup');
+Route::post("/home/save", [MainController::class, 'save'])->name('home.save');
+
+Route::get('/vote', function(){
+    return view("vote.actualite");
+})->name('vote');
+

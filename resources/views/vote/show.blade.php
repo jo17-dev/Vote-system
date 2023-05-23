@@ -1,5 +1,5 @@
 @extends('vote.layout')
-
+<!-- les sondages -->
 @section('css')
     <link rel="stylesheet" href="{{ asset('/css/vote/voteForm.css') }}">
 @endsection

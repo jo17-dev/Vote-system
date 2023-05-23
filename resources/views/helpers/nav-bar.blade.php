@@ -1,5 +1,3 @@
-@extends('vote.actualite')
-
 @section('nav-bar')
 <header>
         <div class="container">

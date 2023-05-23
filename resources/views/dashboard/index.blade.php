@@ -44,7 +44,7 @@
                 </a>
         </div>
         <div class="row">
-            <a href="../vote_form/actualite.php">
+            <a href="{{ url('/dashboard/actualite') }}">
                 <div class="box">
                      <h4> File d'actualite </h4> 
                      <p> visitez tous les votes en cour.  </p>

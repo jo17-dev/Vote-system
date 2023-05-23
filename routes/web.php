@@ -26,13 +26,18 @@ Route::get('/profil', function(){
     return view("home.profil");
 });
 
-Route::get("/dashboard", function(){
-    return view("dashboard.dashboard");
-});
+Route::get("/dashboard",[MainController::class, 'dashboard'])->name('dashboard');
 
-// Route::get("/sign", [MainController::class, 'login']);
-Route::get("/home/signin-signup", [MainController::class, 'register'])->name('home.signin-signup');
+// Routes a usage d'authentification -----------------------------------
+ Route::get("/sign", [MainController::class, 'login']);
+
+Route::get("/sign", [MainController::class, 'register'])->name('home.signin-signup');
+
 Route::post("/home/save", [MainController::class, 'save'])->name('home.save');
+
+Route::post("home/check", [MainController::class, 'check'])->name('home.check');
+
+// ----------------------------------------------------------------------
 
 Route::get('/vote', function(){
     return view("vote.actualite");

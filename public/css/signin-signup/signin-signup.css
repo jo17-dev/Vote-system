@@ -209,6 +209,18 @@ form.sign-up-form{
     z-index: 2;
     opacity: 1;
 }
+.danger-alert{
+    background-color:  rgb(255, 0, 0, 0.5);
+    color: red;
+    padding: 10px;
+    margin: 5px;
+}
+.success-alert{
+    background-color: rgb(0, 119, 0, 0.5);
+    color: green;
+    padding: 10px;
+    margin: 5px;
+}
 
   /* Plus qu'a gerer la responsive et ce sera enfin terminer  */
 

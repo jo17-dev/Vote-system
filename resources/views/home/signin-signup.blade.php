@@ -31,7 +31,19 @@
 
                 <!-- Fornulaire d'inscription -->
                 <form action="{{ route('home.save')}}" class="sign-up-form" method="POST">
-                    @csrf
+                  
+                @if(Session::get('success'))
+                    <div style="color: green">
+                        {{Session::get('success')}}
+                    </div>
+                @endif
+                @if(Session::get('success'))
+                    <div style="color: red">
+                        {{Session::get('fail')}}
+                    </div>
+                @endif
+
+                @csrf
                     <h2 class="title">Inscription</h2>
 
                     <div class="input-field">

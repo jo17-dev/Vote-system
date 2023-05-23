@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\SondageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +41,8 @@ Route::prefix('/dashboard')->group(function(){
     });
 
     Route::resource('/vote', VoteController::class);
+
+    Route::resource('/sondage', SondageController::class);
+
+    Route::get('/person-vote', [VoteController::class, 'person_vote_form']);
 });

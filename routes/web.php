@@ -17,10 +17,10 @@ use App\Http\Controllers\SondageController;
 */
 
 Route::get('/', function () {
-    return redirect("/home");
+    return view("home/layout");
 });
 
-Route::get('/home', function(){
+Route::get('/home/layout', function(){
     return view("home.layout");
 });
 

@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>connexion</title>
-    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('/css/signin-signup/signin-signup.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/fontawesome/css/all.css') }}">
+    <link rel="stylesheet" href="{{ asset('./css/signin-signup/signin-signup.css') }}">
 </head>
 <body>
     <div class="container">
@@ -14,43 +14,68 @@
             <div class="signin-signup">
 
 
-                <!-- Formulaire de connexion  -->
-                <form action="#" class="sign-in-form">
+            <!------------------------------- Formulaire de connexion  -------------------------->
+                <form action="{{ route('home.check') }}" method="POST" class="sign-in-form">
+                
+                @csrf
                     <h2 class="title">Connexion</h2>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Nom d'utilisateur">
+                        <input type="email" placeholder="Entrer votre email" name="email">
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Mot de passe">
+                        <input type="password" placeholder="Mot de passe" name="password">
                     </div>
+                    @if(Session::get('fail'))
+                        <div class="danger-alert input-fields">
+                            {{ Session::get('fail') }} 
+                        </div>
+                    @endif
                     <input type="submit" value="Se connecter" class="btn solid">
                 </form>
 
-                <!-- Fornulaire d'inscription -->
-                <form action="#" class="sign-up-form">
+      <!-------------------------------------- Fornulaire d'inscription ------------------------>
+                <form action="{{ route('home.save')}}" class="sign-up-form" method="POST">
+            
+                @csrf
                     <h2 class="title">Inscription</h2>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Nom d'utilisateur">
+                        <input type="text" placeholder="Nom d'utilisateur" name="nom" value="{{ old('name') }}">
                     </div>
+                    <span style="color: red; font-size: 12px"> @error('nom'){{ $message }} @enderror </span>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" placeholder="Email">
+                        <input type="text" placeholder="Email" name="email" value="{{ old('email');}}">
                     </div>
+                    <span style="color: red; font-size: 12px"> @error('email'){{ $message }}  @enderror </span>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Mot de passe">
+                        <input type="password" placeholder="Mot de passe" name="password">
                     </div>
+                    <span style="color: red; font-size: 12px"> @error('password'){{ $message }} @enderror </span>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Confirmation de mot de passe">
+                        <input type="password" placeholder="Confirmation de mot de passe" name="password2">
                     </div>
+                    <span style="color: red; font-size: 12px"> @error('password'){{ $message }} @enderror </span>
+                    
+
+                    @if(Session::get('success'))
+                        <div class="success-alert">
+                            {{Session::get('success')}}
+                        </div>
+                    @endif
+                    @if(Session::get('fail'))
+                        <div class="danger-alert">
+                            {{Session::get('fail')}}
+                        </div>
+                    @endif
+
                     <input type="submit" value="S'inscrire" class="btn solid">
-                    <a href="dashboard/dashboard.php"> dashboard</a>
                 </form>
             </div>
         </div>

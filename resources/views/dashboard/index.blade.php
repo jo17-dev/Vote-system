@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,16 +28,30 @@
    </header>
 
    <h1>Bienvenue  {{  $LoggedUserInfo['nom']}}...</h1>
+=======
+@extends('dashboard.layout')
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('/css/dashboard/style-dashboard.css') }}">
+@endsection
+
+@section('nav-bar')
+    @include('helpers.nav-bar')
+@endsection
+
+@section('content')
+   <h1>Bienvenue...</h1>
+>>>>>>> work-in-progress
    <!-- <button class="btn">  Nouveau scrutin </button> -->
     <hr>
         <div class="row">
-                <a href="../vote_form/voteForm.php"> 
+                <a href="{{ url('/dashboard/vote') }}"> 
                     <div class="box"> 
                         <h4> creer un vote simple  </h4>
                         <p> Prenez des descisions collectives en toute simplicite. </p>
                     </div>
                 </a>
-                <a href="../vote_form/candidateForm.php">
+                <a href="{{ url('/dashboard/person-vote') }}">
                     <div class="box">
                         <h4> Creer un vote de candidat</h4>
                         <p> Decidez du choix d'un representant par la democratie </p>
@@ -50,7 +65,7 @@
                      <p> visitez tous les votes en cour.  </p>
                 </div>
             </a>
-            <a href="../vote_form/sondage.php">
+            <a href="{{ url('/dashboard/sondage') }}">
                 <div class="box">
                      <h4> Sondage </h4>
                      <p> visitez visitez les sondage des votes en cour </p>
@@ -60,7 +75,4 @@
         <div class="circle"></div>
         <!-- <div class="foot"><img src="../img/shape.jpg" alt="image du footer" class="shape"></div> -->
     </div>
-      
-   
-</body>
-</html>
+@endsection

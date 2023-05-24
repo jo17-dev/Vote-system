@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\SondageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::get("/dashboard",[MainController::class, 'dashboard'])->name('dashboard')
 
 Route::get("/sign", [MainController::class, 'register'])->name('home.signin-signup');
 
+<<<<<<< HEAD
 Route::post("/home/save", [MainController::class, 'save'])->name('home.save');
 
 Route::post("home/check", [MainController::class, 'check'])->name('home.check');
@@ -56,3 +58,9 @@ Route::post("home/logout", [MainController::class, 'logout'])->name('home.logout
 
 //     Route::resource('/vote', VoteController::class);
 // });
+=======
+    Route::resource('/vote', VoteController::class);
+
+    Route::get('/person-vote', [VoteController::class, 'person_vote_form']); // route pour le vote de candidat
+});
+>>>>>>> work-in-progress

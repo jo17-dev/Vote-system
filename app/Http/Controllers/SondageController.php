@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class VoteController extends Controller
+class SondageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,14 +13,7 @@ class VoteController extends Controller
      */
     public function index()
     {
-        // cette methode seras utlisée plus tard l'ors de la creattion de la fil d'actualité
-        return redirect("/dashboard/vote/create");
-
-    }
-
-    // afficher le formulaire pour faire le vote de candidat
-    public function person_vote_form(){
-        return view("vote.person-vote-form");
+        return view("sondage.index");
     }
 
     /**
@@ -30,7 +23,7 @@ class VoteController extends Controller
      */
     public function create()
     {
-        return view("vote.simple-vote-form");
+        //
     }
 
     /**
@@ -52,7 +45,7 @@ class VoteController extends Controller
      */
     public function show($id)
     {
-        return view("vote.show");
+        //
     }
 
     /**
@@ -63,7 +56,7 @@ class VoteController extends Controller
      */
     public function edit($id)
     {
-        return "<h1>Formulaire d'edition de vote</h1>";
+        //
     }
 
     /**

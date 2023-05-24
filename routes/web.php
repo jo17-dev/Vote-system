@@ -42,7 +42,5 @@ Route::prefix('/dashboard')->group(function(){
 
     Route::resource('/vote', VoteController::class);
 
-    Route::resource('/sondage', SondageController::class);
-
-    Route::get('/person-vote', [VoteController::class, 'person_vote_form']);
+    Route::get('/person-vote', [VoteController::class, 'person_vote_form']); // route pour le vote de candidat
 });

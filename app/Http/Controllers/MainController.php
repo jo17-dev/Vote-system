@@ -55,15 +55,23 @@ class MainController extends Controller
             return back()->with('fail', 'Email incorrect');
         }else{
             if(HASH::check($request->password, $userInfo->password)){
-                $request->session()->put('LogginUser', $userInfo->Id);
-                return redirect('home/dashboard');
+                $request->session()->put('LoggedUser', $userInfo->Id);
+                return redirect('dashboard/');
             }else{
                 return back()->with('fail', 'Mot de passe Incorrect');
             }
         }
     }
-
+ 
     function dashboard(){
-        return view('dashboard');
+        $data = ['LoggedUserInfo'=> User::where('id','=', session('LoggedUser'))->first()];
+        return view('dashboard/index', $data);
+    }
+
+    function logout(){
+        if(session()->has('LoggedUse')){
+            session()->pull('loggedUser');
+            return redirect('home/sign');
+        }
     }
 }

@@ -7,7 +7,8 @@
     <title>My voice</title>
 </head>
 <body>
-    @yield('helpers.nav-bar')
-    @yield('helpers.side-bar')
+    <h1>Vote: @yield('title') </h1>
+
+    @yield('content')
 </body>
-</html> 
+</html>

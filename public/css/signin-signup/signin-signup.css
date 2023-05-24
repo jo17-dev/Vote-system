@@ -69,6 +69,16 @@ form.sign-up-form{
     color: #444;
     margin-bottom: 10px;
 }
+/* .input-fields{
+    max-width: 380px;
+    width: 100%;
+    height: 55px;
+    background-color: #f0f0f0;
+    margin: 10px 0;
+    border-radius: 55px;
+    display: grid;
+    padding: 0 .4rem;
+} */
 
 .input-field{
     max-width: 380px;

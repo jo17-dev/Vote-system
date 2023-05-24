@@ -89,7 +89,13 @@ h1{
     transition: .3s;
  }
 
- .box p, .box h4{
+ .box h4{
+    margin-top: 20px;
+    /* text-decoration: none; */
+    color: black;
+ }
+ .box p{
+    margin-top: 20px;
     text-decoration: none;
     color: black;
  }

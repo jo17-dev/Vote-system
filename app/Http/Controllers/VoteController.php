@@ -7,6 +7,7 @@ session_start();
 use Illuminate\Http\Request;
 use App\Models\Vote;
 use App\Models\Candidat;
+use App\Models\Votant;
 
 class VoteController extends Controller
 {
@@ -186,8 +187,32 @@ class VoteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validation = $request->validate([
+            'email'=> 'required'
+        ]);
+
+        if(!$validation){ // si la validation n'est pas complete, retourner les messages
+            return redirect()->back();
+        }
+
         $data = $request->all();
         dd($data);
+
+        if( isset($data['choix']) ){
+            // Vote::create([
+            //     'vote_id' => $data['vote_id'],
+            //     'candidat_id' => $data['choix']
+            // ]);
+
+            $already_voted_info = Votant::where('vote_id', $data['vote_id'])->get();
+
+            foreach($already_voted_info as $item){
+                if( strtolower($item->votant_email)  == strtolower($data['votant_email'])  ){
+                    // $have_already_voted = 
+                }
+            }
+
+        } 
     }
 
     /**

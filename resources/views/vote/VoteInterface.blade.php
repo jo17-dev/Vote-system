@@ -21,19 +21,20 @@
     </div>
 
     <div class="d2 first">
-        <p>Pour qui désirez-vous voter ?</p>
+        <p>Pour quel choix optez vous ?</p>
         <form action="{{ url('/dashboard/vote/' . $vote->id ) }}" method="POST">
             @csrf
             @method('PUT')
             @forelse($cand as $c)
 
-            <p class="op"><input type="radio" name="candidat" value="cand<?= $i ?>"> {{ $c->nom}} </p>
+            <p class="op"><input type="radio" name="choix" value="{{ $c->id }}"> {{ $c->nom}} </p>
 
             <?php $i++; ?>
 
             @endforeach
+            <input type="hidden" name="vote_id" value="{{ $vote->id }}">
 
-            <p class="op"><input type="radio" name="candidat" value="null"> Vote blanc </p>
+            <!-- <p class="op"><input type="radio" name="candidat" value="null"> Vote blanc </p> -->
 
             <!-- <button>
                 Valider

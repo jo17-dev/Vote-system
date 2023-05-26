@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-
+use App\Http\Middleware\AuthCheck;
 use App\Http\Controllers\VoteController;
 use App\Http\Controllers\SondageController;
 
@@ -18,10 +18,10 @@ use App\Http\Controllers\SondageController;
 */
 
 Route::get('/', function () {
-    return redirect("/home");
+    return view("home/layout");
 });
 
-Route::get('/home', function(){
+Route::get('/home/layout', function(){
     return view("home.layout");
 });
 
@@ -29,24 +29,38 @@ Route::get('/home', function(){
 
 // les route ci desous sont juste des prototypes
 
-Route::get("/dashboard",[MainController::class, 'dashboard'])->name('dashboard');
-
-
 // Routes a usage d'authentification -----------------------------------
- Route::get("/sign", [MainController::class, 'login']);
+Route::get("/sign", [MainController::class, 'login']);
 
 Route::get("/sign", [MainController::class, 'register'])->name('home.signin-signup');
 
-<<<<<<< HEAD
+Route::resource('/vote', VoteController::class);
+
+// });
 Route::post("/home/save", [MainController::class, 'save'])->name('home.save');
 
 Route::post("home/check", [MainController::class, 'check'])->name('home.check');
 
-Route::post("home/logout", [MainController::class, 'logout'])->name('home.logout');
+Route::get("home/logout", [MainController::class, 'logout'])->name('home.logout');
 
+Route::get("/dashboard",[MainController::class, 'dashboard'])->name('dashboard');
+// --------------------------------------------------------------------------
+
+// here we can use middleware for more security
+Route::middleware([AuthCheck::class])->group(function(){
+    
+    Route::prefix('/dashboard')->group(function(){
+
+        Route::get('/actualite', function(){
+            return view("dashboard.actualite");
+        });
+    
+        Route::resource('/vote', VoteController::class);
+    });
+});
 // ----------------------------------------------------------------------
 
-// Route::prefix('/dashboard')->group(function(){
+Route::prefix('/dashboard')->group(function(){
 
 //     Route::get('/', function(){
 //         return view("dashboard.index");
@@ -58,9 +72,14 @@ Route::post("home/logout", [MainController::class, 'logout'])->name('home.logout
 
 //     Route::resource('/vote', VoteController::class);
 // });
-=======
-    Route::resource('/vote', VoteController::class);
+    // Route::get('/', function(){
+    //     return view("dashboard.index");
+    // });
 
+    Route::get('/actualite', function(){
+        return view("dashboard.actualite");
+    });
+
+    Route::resource('/vote', VoteController::class);
     Route::get('/person-vote', [VoteController::class, 'person_vote_form']); // route pour le vote de candidat
 });
->>>>>>> work-in-progress

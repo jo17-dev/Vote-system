@@ -37,9 +37,13 @@ Route::get("/sign", [MainController::class, 'login']);
 
 Route::get("/sign", [MainController::class, 'register'])->name('home.signin-signup');
 
+<<<<<<< HEAD
 Route::resource('/vote', VoteController::class);
 
 // });
+=======
+<<<<<<< HEAD
+>>>>>>> walter
 Route::post("/home/save", [MainController::class, 'save'])->name('home.save');
 
 Route::post("home/check", [MainController::class, 'check'])->name('home.check');
@@ -58,6 +62,17 @@ Route::prefix('/dashboard')->group(function(){
         return view("dashboard.actualite");
     });
 
+<<<<<<< HEAD
+=======
+//     Route::resource('/vote', VoteController::class);
+// });
+=======
+>>>>>>> walter
     Route::resource('/vote', VoteController::class);
     Route::get('/person-vote', [VoteController::class, 'person_vote_form']); // route pour le vote de candidat
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> work-in-progress
+>>>>>>> walter

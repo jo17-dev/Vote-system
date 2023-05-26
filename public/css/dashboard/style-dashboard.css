@@ -12,6 +12,8 @@ body{
 header{
     position: relative;
     background-color: #64bcf4;
+    /* j'ai ajouter le head ici */
+    height: 8vh;
 }
 
 header .container{

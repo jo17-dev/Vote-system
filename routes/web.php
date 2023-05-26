@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Middleware\AuthCheck;
 use App\Http\Controllers\VoteController;
+use App\Http\Controllers\SondageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,10 @@ use App\Http\Controllers\VoteController;
 */
 
 Route::get('/', function () {
-    return redirect("/home");
+    return view("home/layout");
 });
 
-Route::get('/home', function(){
+Route::get('/home/layout', function(){
     return view("home.layout");
 });
 
@@ -29,10 +30,13 @@ Route::get('/home', function(){
 // les route ci desous sont juste des prototypes
 
 // Routes a usage d'authentification -----------------------------------
-Route::get("/sign", [MainController::class, 'register'])->name('home.signin-signup');
-
 Route::get("/sign", [MainController::class, 'login']);
 
+Route::get("/sign", [MainController::class, 'register'])->name('home.signin-signup');
+
+Route::resource('/vote', VoteController::class);
+
+// });
 Route::post("/home/save", [MainController::class, 'save'])->name('home.save');
 
 Route::post("home/check", [MainController::class, 'check'])->name('home.check');
@@ -56,4 +60,16 @@ Route::middleware([AuthCheck::class])->group(function(){
 });
 // ----------------------------------------------------------------------
 
+Route::prefix('/dashboard')->group(function(){
 
+    // Route::get('/', function(){
+    //     return view("dashboard.index");
+    // });
+
+    Route::get('/actualite', function(){
+        return view("dashboard.actualite");
+    });
+
+    Route::resource('/vote', VoteController::class);
+    Route::get('/person-vote', [VoteController::class, 'person_vote_form']); // route pour le vote de candidat
+});

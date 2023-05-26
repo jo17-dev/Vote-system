@@ -1,0 +1,341 @@
+:root{
+    --blue: #64bcf4;
+    --red: #f44336;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'poppins', sans-serif;
+    overflow-y: none; 
+    background-color: whitesmoke;
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    background-color: var(--blue); 
+    z-index: 10;
+    /* j'ai ajouter le head ici */
+    /* height: 8vh; */
+}
+
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img{
+    width: 60px;
+    margin-left: .8rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    border-radius: 50%;
+}
+.logo h3{
+    font-size: 1.55rem;
+    line-height: 1.22rem;
+    font-weight: 700;
+}
+
+a{
+    text-decoration: none;
+    margin-left: 4.5rem;
+    display: inline-block;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.links ul{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+.links a{
+    color: #f1f8fc;
+    margin-left: 1rem;
+}
+li i{
+    margin-right: 20px;
+}
+
+  /* corp de la formVote.php */
+
+  .sidenav {
+    top: 70px;
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    background-color: white;
+    overflow-x: hidden;
+  }
+
+  .sidenav a {
+    color: #111;
+    padding: 16px;
+    margin: 0;
+    text-decoration: none;
+    display: block;
+  }
+
+  .sidenav a:hover {
+    background-color: var(--blue);
+    color: white;
+  }
+  .avatar{
+    margin: 16px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  hr{
+    opacity: 0.3;
+  }
+  .content {
+    margin-left: 300px;
+    padding-left: 20px;
+    padding-bottom: 50px;
+    background-color: whitesmoke;
+  }
+  .content-header{
+    position: relative;
+    top: 120px;
+    z-index: 1;
+    width: 100%;
+  }
+
+  .progress-container{
+    width: 100%;
+    height: 8px;
+    background: #ccc;
+  }
+  .progress-bar{
+    width: 32%;
+    height: 8px;
+    background: #04aa6d;
+  }
+  .sub-content{
+    padding: 100px 0px 0px 0px;
+    margin-top: 22px;
+    width: 100%;
+  }
+
+  /* style de la page de sondage  */
+  .subject{
+    display: flex;
+    overflow-x: auto;
+    margin-bottom: 10px;
+    justify-content: space-between;
+  }
+  .box{
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    margin: 0 12px 0 0;
+    width: 25%;
+  }
+  .box-header{
+    padding: 16px;
+    width: 100%;
+  }
+  .box-header p{
+    color: white;
+    font-size: 22px;
+    padding: 10px 20px 0px 10px;
+  }
+  .box-footer{
+    width: 100%;
+
+  }
+  .box-footer p{
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px 20px 10px;
+  }
+  .profil{
+    width: 40%;
+    margin-top: 10px;
+    height: 300px;
+    overflow-y: auto;
+  }
+  .data{
+    width: 60%;
+    margin-top: 10px;
+    height: 300px;
+    overflow-y: auto;
+  }
+  .subject>p{
+    width: 50%;
+    font-weight: 400;
+    font-size: large;
+    margin-top: 20px;
+  }
+
+  #data {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+ 
+  #data td{
+    border: none;
+    padding: 8px;
+    font-size: large;
+  }
+  
+  #data tr:nth-child(even){
+    background-color: white;
+}
+#data2{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+  }
+  #data2 td{
+    border: solid 1px #ddd;
+    padding: 8px;
+    font-size: large;
+  }
+  #data2 tr:nth-child(even){
+    background-color: white;
+}
+#data2 tr:hover {background-color: #ddd;}
+
+.progress{
+    width: 100%;
+    height: 40px;
+    background: #ccc;
+    margin: 10px;
+  }
+  .bar{
+    height: 40px;
+    background: #04aa6d;
+  }
+  .bar p{
+    text-align: center;
+    color: white;
+    padding-top: 10px;
+  }
+  .box2{
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    margin: 0 12px 0 0;
+    width: 95%;
+  }
+
+      /* style de la page du formulaire des de vote des candidats */
+
+input[type=text], select, textarea {
+        width: 100%;
+        margin-top: 8px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+}
+input[type=date]{
+  width: 20%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: horizontal;
+}
+      
+label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+}
+      
+input[type=submit], input[type=button]{
+        background-color: var(--blue);
+        color: white;
+        padding: 12px 20px;
+        margin-top: 8px;
+        margin-right: 8px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+}
+      
+input[type=submit]:hover {
+        background-color: #45a049;
+}
+      
+.containers {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+}
+      
+.col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+}
+      
+.col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+}
+      
+.row:after {
+        content: "";
+        display: table;
+        clear: both;
+}
+
+  /* Style de la page d'actualite     */
+
+  input.search {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('../img/searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    transition: width 0.4s ease-in-out;
+    outline: none;
+  }
+  
+  input.search:focus {
+    width: 90%;
+  }
+
+  .journal{
+    width: 90%;
+    margin: 12px;
+    background-color: white;
+  }
+  .journal p, .journal h2{
+    padding: 3px;
+    border-radius: 5px;
+    margin-bottom: 0;
+  }
+  .rows{
+    display: flex;
+  }
+
+  .rows i{
+    font-size: 50px;
+    text-align: center;
+    padding: 30px;
+  }
+  .col-15{
+    width: 15%;
+  }
+  .col-80{
+    width: 80%;
+  }

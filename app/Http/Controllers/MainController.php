@@ -18,6 +18,8 @@ class MainController extends Controller
         return view('home.signin-signup');
     }
 
+
+// enregsitrer un user
     function save(Request $request){
 
         // valider la requette

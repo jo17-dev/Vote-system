@@ -33,6 +33,16 @@
                             {{ Session::get('fail') }} 
                         </div>
                     @endif
+                    @if(Session::get('success'))
+                        <div class="success-alert">
+                            {{Session::get('success')}}
+                        </div>
+                    @endif
+                    @if(Session::get('fail'))
+                        <div class="danger-alert">
+                            {{Session::get('fail')}}
+                        </div>
+                    @endif
                     <input type="submit" value="Se connecter" class="btn solid">
                 </form>
 

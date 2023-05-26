@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+session_start();
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -57,7 +58,22 @@ class MainController extends Controller
             return back()->with('fail', 'Email incorrect');
         }else{
             if(HASH::check($request->password, $userInfo->password)){
-                $request->session()->put('LoggedUser', $userInfo->Id);
+                // creattion de la session
+                // $request->session()->put('LoggedUser', $userInfo->Id);
+                // session('LoggedUser', $userInfo);
+                // $_SESSION['LoggedUser'] = [
+                //     $userInfo->id,
+                //     $userInfo->nom,
+                //     $userInfo->email
+                // ];
+
+                session([
+                    'LoggedUser' => [
+                        $userInfo->id,
+                        $userInfo->nom,
+                        $userInfo->email
+                    ]
+                ]);
                 return redirect('dashboard/');
             }else{
                 return back()->with('fail', 'Mot de passe Incorrect');
@@ -66,7 +82,7 @@ class MainController extends Controller
     }
  
     function dashboard(){
-        $data = ['LoggedUserInfo'=> User::where('id','=', session('LoggedUser'))->first()];
+        $data = ['LoggedUser'=> User::where('id', session('LoggedUser'))->first()];
         return view('dashboard/index', $data);
     }
 

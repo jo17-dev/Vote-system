@@ -29,7 +29,7 @@ Route::get('/home/layout', function(){
 
 // les route ci desous sont juste des prototypes
 
-Route::get("/dashboard",[MainController::class, 'dashboard'])->name('dashboard');
+// Route::get("/dashboard",[MainController::class, 'dashboard'])->name('dashboard');
 
 
 // Routes a usage d'authentification -----------------------------------
@@ -50,9 +50,10 @@ Route::post("home/logout", [MainController::class, 'logout'])->name('home.logout
 
 Route::prefix('/dashboard')->group(function(){
 
-    Route::get('/', function(){
-        return view("dashboard.index");
-    });
+    // Route::get('/', function(){
+    //     return view("dashboard.index");
+    // });
+    Route::get("/",[MainController::class, 'dashboard'])->name('dashboard');
 
     Route::get('/actualite', function(){
         return view("dashboard.actualite");

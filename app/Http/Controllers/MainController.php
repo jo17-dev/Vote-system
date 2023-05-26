@@ -69,9 +69,9 @@ class MainController extends Controller
 
                 session([
                     'LoggedUser' => [
-                        $userInfo->id,
-                        $userInfo->nom,
-                        $userInfo->email
+                        'id' => $userInfo->id,
+                        'nom' => $userInfo->nom,
+                        'email' => $userInfo->email
                     ]
                 ]);
                 return redirect('dashboard/');

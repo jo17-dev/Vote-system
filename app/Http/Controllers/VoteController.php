@@ -22,7 +22,15 @@ class VoteController extends Controller
 
     }
 
-    // afficher le formulaire pour faire le vote de candidat
+    // fonction sui vas permettre de gere l'actualite
+    public function actualite(){
+        $votes = Vote::where('admin', session('LoggedUser.id'))->get();
+        return view("dashboard.actualite", [
+            'votes' => $votes,
+        ]);
+    }
+
+    // afficher le formulaire pour creer un vote de candidat
     public function person_vote_form(){
         return view("vote.person-vote-form");
     }
@@ -45,7 +53,7 @@ class VoteController extends Controller
      */
     public function store(Request $request)
     {   
-        $validation = true;
+        // $validation = true;
 
         $validation = $request->validate([
             'titre' => 'required|max:100',
@@ -63,8 +71,7 @@ class VoteController extends Controller
             $candidats = [];
             $voteType = $data['voteType'];
         
-            // $user_data = session('LoggedUser');
-            $user_data['id'] = 2;
+            $user_data = session('LoggedUser.id');
 
             foreach($data as $key => $item){ // recuperation séaparée des données
                 $is_candidat = stristr($key, 'candidat');
@@ -79,6 +86,8 @@ class VoteController extends Controller
             }
             echo "candidats: " . count($candidats) . " motivations: " . count($motivations);
 
+
+
             // creation du vote + recuperer son ID
             $newVote = Vote::create([
                     'admin' => $user_data['id'],
@@ -91,39 +100,47 @@ class VoteController extends Controller
            echo $newVote->id;
             // creation des candiats
                 // vote de choix
-            if($voteType != "person"){
-                for($i=0; $i< count($candidats); $i++ ){
-                    $newCanddat = Candidat::create([
-                        'vote_id' => $newVote->id,
-                        'nom' => addslashes($candidats[$i]),
-                        'is_human' => false,
-                        'motivation' => $motivations[$i]
-                    ]);
+            $dateDebut = strtotime($data['dateDebut']) ;
+            $dateFin = strtotime($data['dateFin']);
+
+            echo $dateDebut;
+            if($dateFin > $dateDebut ){
+                if($voteType != "person"){
+                    for($i=0; $i< count($candidats); $i++ ){
+                        $newCanddat = Candidat::create([
+                            'vote_id' => $newVote->id,
+                            'nom' => addslashes($candidats[$i]),
+                            'is_human' => false,
+                            'motivation' => $motivations[$i]
+                        ]);
+                    }
+                    // return redirect() vers l'actualité
+                    echo "Fin du vote de choix";
                 }
-                // return redirect() vers l'actualité
-                echo "Fin du vote de choix";
-            }
-                // votes de personnes
-            if($voteType == "person"){
-                for($i=0; $i< count($candidats); $i++ ){
-                    $newCanddat = Candidat::create([
-                        'vote_id' => $newVote->id,
-                        'nom' => addslashes($candidats[$i]),
-                        'email' => addslashes($data[$i]['email']),
-                        'is_human' => true,
-                        'motivation' => addslashes($motivations[$i])
-                    ]);
+                    // votes de personnes
+                if($voteType == "person"){
+                    for($i=0; $i< count($candidats); $i++ ){
+                        $newCanddat = Candidat::create([
+                            'vote_id' => $newVote->id,
+                            'nom' => addslashes($candidats[$i]),
+                            'email' => addslashes($data[$i]['email']),
+                            'is_human' => true,
+                            'motivation' => addslashes($motivations[$i])
+                        ]);
+                    }
+                    return redirect('dashboard/actualite');
+                    echo "Fin du vote de choix";
                 }
-                return redirect('dashboard/actualite');
-                echo "Fin du vote de choix";
+            }else{
+                return redirect()->back()->with("flash", "Echec de l'operation, entrer des dates valides veuillez reessayer");
             }
+
             if(!$newCanddat){
                 $newVote->delete();
             }
 
         }
         return redirect()->back()->with("flash", "Echec de l'operation, veuillez reessayer");
-
     }
 
     /**
@@ -134,7 +151,19 @@ class VoteController extends Controller
      */
     public function show($id)
     {
-        return view("vote.show");
+        $vote = Vote::find($id);
+        $cand = Candidat::where('vote_id', $id)->get();
+        return view("vote.voteInterface", compact('cand', 'vote'));
+
+
+
+        // return view("vote.show");
+    }
+
+    function voteInterface($id){
+        $vote = Vote::find($id);
+        $cand = Candidat::where('vote_id', $id)->get();
+        return view("vote.voteInterface", compact('cand', 'vote'));
     }
 
     /**
@@ -157,7 +186,8 @@ class VoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        dd($data);
     }
 
     /**

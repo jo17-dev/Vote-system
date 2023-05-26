@@ -55,10 +55,10 @@ Route::prefix('/dashboard')->group(function(){
     // });
     Route::get("/",[MainController::class, 'dashboard'])->name('dashboard');
 
-    Route::get('/actualite', function(){
-        return view("dashboard.actualite");
-    });
+    Route::get('/actualite', [VoteController::class, 'actualite']);
 
     Route::resource('/vote', VoteController::class);
     Route::get('/person-vote', [VoteController::class, 'person_vote_form']); // route pour le vote de candidat
+    
+    // Route::get('/vote/{id}', [VoteController::class, 'voteInterface']);
 });

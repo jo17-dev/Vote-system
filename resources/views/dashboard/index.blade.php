@@ -26,8 +26,8 @@
         </div>
    </header>
 
-   <h1>Bienvenue  {{  $LoggedUserInfo['nom']}}...</h1>
-   <!-- <button class="btn">  Nouveau scrutin </button> -->
+   <h1>Bienvenue  {{  $LoggedUser['nom']}}...</h1>
+   <!-- <button class="btn">  Nouveau scrutin </button>  -->
     <hr>
         <div class="row">
                 <a href="../vote_form/voteForm.php"> 

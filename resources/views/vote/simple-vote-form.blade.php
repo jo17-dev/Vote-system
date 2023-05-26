@@ -25,9 +25,10 @@
     <div class="sub-content">
 
         <div class="containers">
-            <form action="{{ url('/dashboard/vote') }}" >
+            <form action="{{ url('/dashboard/vote') }}" method="POST">
                 @csrf
                 @method('post')
+                <input type="hidden" name="voteType" value="thing">
                 <div class="row">
                     <div class="col-25">
                         <label for="fname">Titre</label>
@@ -41,7 +42,7 @@
                         <label for="lname">Objectifs</label>
                     </div>
                     <div class="col-75">
-                    <input type="text" id="lname" name="motivation" placeholder="Pourquoi faire ce vote ?">
+                    <input type="text" id="lname" name="whyToDo" placeholder="Pourquoi faire ce vote ?">
                     </div>
                 </div>
                 <div class="row">
@@ -57,18 +58,22 @@
                         <label for="lname">Date de debut et fin</label>
                     </div>
                     <div class="col-75">
-                    <input type="date" id="lname" name="begin" placeholder="Your last name.." >
-                    <input type="date" id="lname" name="end" placeholder="Your last name..">
+                    <input type="date" id="lname" name="dateDebut" placeholder="Your last name.." >
+                    <input type="date" id="lname" name="dateFin" placeholder="Your last name..">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label for="lname">Resolution</label>
+                        <label for="lname">Choix, </label>
+                        <label for="lname">Motivation</label>
                     </div>
                     <div class="col-75">
-                        <div id="cand"><input type="text" name="candidat[]" placeholder="nom du candidat.." ></div>
-                        <input type="button" name="end" value="+ Ajouter" onclick="Add()" >
-                        <input type="button" name="end" value="- Enlever" onclick="remove()" style="background: var(--red)">
+                        <div id="cand">
+                            <input type="text" name="candidat_0" placeholder="nom du choix.." >
+                            <input type="text" name="motivation_0" placeholder="Motivation" >
+                        </div>
+                        <input type="button" name="end" value="+ Ajouter" onclick="Add('candidat')" >
+                        <input type="button" name="end" value="- Enlever" onclick="/*remove('candidat');*/remove('motivation');" style="background: var(--red)">
                     </div>
                 </div>
                 <div class="row">

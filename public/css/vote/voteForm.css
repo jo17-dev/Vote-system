@@ -21,7 +21,7 @@ header{
     background-color: var(--blue); 
     z-index: 10;
     /* j'ai ajouter le head ici */
-    height: 8vh;
+    /* height: 8vh; */
 }
 
 header .container{

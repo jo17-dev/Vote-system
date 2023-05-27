@@ -204,11 +204,11 @@ class VoteController extends Controller
             //     'candidat_id' => $data['choix']
             // ]);
 
-            $already_voted_info = Votant::where('vote_id', $data['vote_id'])->get();
+            $already_voted_info = Votant::where('vote_id', $data['vote_id'])->get(); // recuperer tout les 
 
             foreach($already_voted_info as $item){
                 if( strtolower($item->votant_email)  == strtolower($data['votant_email'])  ){
-                    // $have_already_voted = 
+                    $have_already_voted = true;
                 }
             }
 

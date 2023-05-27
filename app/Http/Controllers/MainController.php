@@ -66,7 +66,7 @@ class MainController extends Controller
             }else{
                 return back()->with('fail', 'Mot de passe Incorrect');
             }
-        }
+        } return back()->with('fail', 'Something went wrong !');
     }
  
     // un logout customise
@@ -79,10 +79,18 @@ class MainController extends Controller
             $request->session()->invalidate();
             return redirect('/home');
         }
+        return redirect('/sign');
     }
+
+
     function dashboard(){
         $data = ['LoggedUser'=> User::where('id','=', session('LoggedUser'))->first()];
         return view('dashboard/index', $data);
+    }
+
+    function profil(){
+        $data = ['LoggedUser'=> User::where('id','=', session('LoggedUser'))->first()];
+        return view('home.profil', $data);
     }
 
     

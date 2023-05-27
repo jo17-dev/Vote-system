@@ -8,17 +8,10 @@
 @section('nav-bar')
     @include('helpers.nav-bar')
 @endsection
-
 @section('side-bar')
-<div class="sidenav">
-    <img src="../img/avatar3.png" alt="" class="avatar"> <hr>
-    <a href="{{ url('/dashboard/actualite') }}">Actualite</a>
-    <a href="{{ url('/dashboard/vote') }}">Vote simple</a>
-    <a href="{{ url('/dashboard/vote/'. '1' .'/edit') }}">Nommination de candidat</a>
-    <a href="{{ url('/dashboard/sondage') }}">Sondage des votes</a>
-    <a href="{{ url('/dashboard/') }}">Menu principal</a>
-</div>
+    @include('helpers.side-bar')
 @endsection
+
 
 
 

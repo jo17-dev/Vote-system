@@ -27,7 +27,7 @@
                     </div>
                 </a>
         </div>
-        <div class="row">
+        <div class="row"> 
             <a href="{{ url('/dashboard/actualite') }}">
                 <div class="box">
                      <h4> File d'actualite </h4> 
@@ -37,7 +37,7 @@
             <a href="{{ url('/dashboard/vote/person-vote') }}">
                 <div class="box">
                      <h4> Sondage </h4>
-                     <p> visitez visitez les sondage des votes en cour </p>
+                     <p> visitez les sondage des votes en cour </p>
                 </div>
             </a>
         </div>  

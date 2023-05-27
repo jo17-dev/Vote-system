@@ -5,6 +5,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Middleware\AuthCheck;
 use App\Http\Controllers\VoteController;
 use App\Http\Controllers\SondageController;
+use App\Http\Controllers\VoteInterfaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +26,11 @@ Route::get('/home/layout', function(){
     return view("home.layout");
 });
 
+// route de la navBar  -------------------------------------------
 
+Route::get("/home/profil", [MainController::class, 'profil'])->name('home.profil');
 
-// les route ci desous sont juste des prototypes
+// ---------------------------------------------------------------
 
 // Routes a usage d'authentification -----------------------------------
 Route::get("/sign", [MainController::class, 'login']);
@@ -73,3 +76,5 @@ Route::prefix('/dashboard')->group(function(){
     Route::resource('/vote', VoteController::class);
     Route::get('/person-vote', [VoteController::class, 'person_vote_form']); // route pour le vote de candidat
 });
+
+// Route::get("inter/{id}", [VoteInterfaceController::class, 'option']);

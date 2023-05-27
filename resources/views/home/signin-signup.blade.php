@@ -91,7 +91,7 @@
                     <button class="btn transparent" id="sign-up-btn">S'inscrire</button>
                 </div>
 
-                <img src="img/undraw_maker_launch_re_rq81.svg" alt="image en svg ici" class="image">
+                <img src="{{ asset('/img/undraw_maker_launch_re_rq81.svg') }}" alt="image en svg ici" class="image">
             </div>
 
             <div class="pannel right-panel">
@@ -103,7 +103,7 @@
                     <button class="btn transparent" id="sign-in-btn">Se connecter</button>
                 </div>
 
-                <img src="img/undraw_access_account_re_8spm.svg" alt="image en svg ici" class="image">
+                <img src="{{ asset('/img/undraw_access_account_re_8spm.svg') }}" alt="image en svg ici" class="image">
             </div>
         </div>
     </div>

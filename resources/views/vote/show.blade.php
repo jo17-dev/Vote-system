@@ -63,7 +63,7 @@
             <div class="subject">
                 <div class="profil">
                     
-                    <img src="../img/avatar2.png" alt="2nd avatar" width=250>
+                    <img src="{{ asset('/img/avatar2.png') }}" alt="2nd avatar" width=250>
                 </div>
                 <div class="data">
                 <table id="data">
@@ -109,10 +109,10 @@
             <div class="progress">
                 <div class="bar" style=" width:25%"><p>25%</p></div>
             </div>
-            <p class="etat">vote neutre</p>
-            <div class="progress">
+            <!-- <p class="etat">vote neutre</p> -->
+            <!-- <div class="progress">
                 <div class="bar" style="background: #ff9800; width:50%"><p>50%</p></div>
-            </div>
+            </div> -->
             <p class="etat">vote negatif</p>
             <div class="progress" >
                 <div class="bar" style="background: #f44336; width:75%"><p>75%</p></div>

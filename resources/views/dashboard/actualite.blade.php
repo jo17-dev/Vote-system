@@ -3,7 +3,7 @@
 <!-- =========== chargemen du css la parage d'actualit -->
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/vote/voteForm.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/dashboard/all.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/fontawesome/css/all.css') }}">
 @endsection
 
 <!-- ========== nav bar  -->

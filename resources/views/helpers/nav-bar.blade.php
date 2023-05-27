@@ -2,7 +2,7 @@
 <header>
     <div class="container">
         <div class="logo">
-            <img src="../img/logo1.png" alt="logo">
+            <img src="{{ asset('/img/logo1.png') }}" alt="logo">
             <h3>Myvoice.</h3>
         </div>
         <div class="links">

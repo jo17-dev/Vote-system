@@ -72,7 +72,7 @@ class VoteController extends Controller
             $candidats = [];
             $voteType = $data['voteType'];
         
-            $user_data = session('LoggedUser.id');
+            $user_data = session('LoggedUser');
 
             foreach($data as $key => $item){ // recuperation séaparée des données
                 $is_candidat = stristr($key, 'candidat');

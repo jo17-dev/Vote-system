@@ -20,6 +20,7 @@ class CreateVotesTable extends Migration
             $table->string("titre");
             $table->text("description");
             $table->boolean("is_finished")->default(false);
+            $table->date("dateDebut");
             $table->date("dateFin");
 
             $table->timestamps();

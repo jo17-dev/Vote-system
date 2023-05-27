@@ -18,7 +18,8 @@ class CreateCandidatsTable extends Migration
 
             $table->foreignId("vote_id")->constrained("votes");
             $table->string("nom");
-            $table->string("email");
+            $table->string("is_human")->default(true);
+            $table->string("email")->nullable();
             $table->text("motivation");
 
             $table->timestamps();

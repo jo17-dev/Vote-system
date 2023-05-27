@@ -25,7 +25,7 @@
                             <li><a href="#nos-produits" style="--i:3">Nos services</a></li>
                             <li><a href="#contact" style="--i:4">contacts</a></li>
                             <li><a href="#a-propos" style="--i:2">A propos</a></li>
-                            <li> <a href="connexion.php" class="btn">Se connecter</a> </li>
+                            <li> <a href="{{ url('/sign') }}" class="btn">Se connecter</a> </li>
                         </ul>
                     </div>
                     <div class="overlay"></div>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="right">
-                    <img src="img/person.png" alt="photo de presentation" class="person">
+                    <img src="{{ asset('/img/person.png')}}" alt="photo de presentation" class="person">
                     </div>
                 </div>
             </div>

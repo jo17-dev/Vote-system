@@ -18,7 +18,8 @@ class CreateVoteCastsTable extends Migration
 
             $table->foreignId("vote_id")->constrained("votes");
             $table->foreignId("candidat_id")->constrained("candidats");
-            $table->integer("statut");
+            $table->integer("statut")->default(4); // a quoi sa sert dejas ?
+            $table->string("votant_email"); // a quoi sa sert dejas ?
 
             $table->timestamps();
         });

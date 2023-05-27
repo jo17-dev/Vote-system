@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'poppins', sans-serif;
+    overflow-y: none; 
+}
+
+header{
+    position: relative;
+    background-color: #64bcf4;
+}
+
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo img{
+    width: 60px;
+    margin-left: .8rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    border-radius: 50%;
+}
+.logo h3{
+    font-size: 1.55rem;
+    line-height: 1.22rem;
+    font-weight: 700;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    /* margin-left: 4.5rem; */
+    display: inline-block;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.links ul{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+.links a{
+    color: #f1f8fc;
+    margin-left: 1rem;
+}
+li i{
+    margin-right: 20px;
+    font-size: large;
+}
+
+ /* le corp du dashboard */
+h1{
+    font-size: 2rem;
+    line-height: 1.22rem;
+    font-weight: 700;
+    margin: 25px 15px 5px 15px;
+}
+ .row{
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 10rem;
+    text-align: center;
+ }
+
+ .box{
+    width: 30rem;
+    height: 5rem;
+    background-color: #c7c7c7;
+    color: black;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    border-radius: 8px;
+    text-align: center;
+ }
+ .box:hover{
+    color: white;
+    background-color: #64bcf4;
+    transform: translateZ(-20px), scale(10px);
+    transition: .3s;
+ }
+
+ .box h4{
+    margin-top: 20px;
+    /* text-decoration: none; */
+    color: black;
+ }
+ .box p{
+    margin-top: 20px;
+    text-decoration: none;
+    color: black;
+ }
+ .container2{
+    width: 100%;
+    min-height: 90vh;
+    overflow-y: hidden;
+ }
+
+ hr{
+    width: 80%;
+    margin-left: 5.5rem;
+    margin-bottom: 7rem;
+ }
+ .btn{
+    display: inline-block;
+    background-color: #64bcf4;
+    border: none;
+    border-radius: 5px;
+    padding: .9rem 1.9rem;
+    cursor: pointer;
+ }
+ .circle{
+    position: relative;
+    width: 15rem;
+    height: 15rem;
+    bottom: -60px;
+    left: -70px;
+    background-color: #64bcf4;
+    border-radius: 50%;
+    z-index: -1;
+    animation: echo 4s ease-in-out infinite;
+    /* animation-delay: 0.6s; */
+ }
+ .circle::before, 
+ .circle::after{
+     content: "";
+     position: absolute;
+     width: 16rem;
+     height: 16rem;
+     bottom: -16px;
+     left: -10px;
+     background-color: #64bcf4;
+     border-radius: 50%;
+     opacity: 0.3;
+     /* transform: rotateY(45deg); */
+ }
+
+   /*     Les animations   */
+
+ @keyframes echo {
+    0%{
+        width: 15rem;
+        height: 15rem;
+       
+    }
+    50%{
+        width: 14rem;
+        height: 14rem;
+       
+    }
+    100%{
+        width: 15rem;
+        height: 15rem;
+    }
+ }  

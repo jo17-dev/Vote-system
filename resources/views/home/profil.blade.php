@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ asset('./css/index/profil.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/fontawesome/css/all.css') }}">
 </head>
 
 <body>
@@ -17,9 +18,10 @@
 
     <div class="d2">
         <div class="d3">
-            <a href="#">
-                <img src="{{ asset('/image/vlcsnap-2023-05-20-10h52m17s725.png') }}" alt="Votre profil" class="circ">
-            </a>
+            
+                <img src="{{ asset('/img/avatar3.png') }}" alt="Votre profil" class="circ">
+                <div class="cercle"><i class="fa-solid fa-user-pen fa-2xl"></i></div>
+            
         </div>
     </div>
 
@@ -27,19 +29,19 @@
 
         <a href="#">
             <div class="pr" style="border-top: 1px solid black;">
-                Nom: YANN
+                Nom: {{ $LoggedUser['nom'] }}
             </div>
         </a>
 
         <a href="#">
             <div class="pr">
-                email: yann@gamil.com
+                email: {{ $LoggedUser['email'] }}
             </div>
         </a>
 
         <a href="#">
             <div class="pr">
-                Mot de passe: hyfjygfvhjfjuh
+                Mot de passe: {{ $LoggedUser['password'] }}
             </div>
         </a>
 

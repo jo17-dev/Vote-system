@@ -1,0 +1,64 @@
+:root{
+    --blue: #64bcf4;
+    --red: #f44336;
+    --dark-blue: #64bdf43a;
+}
+
+body{
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color:#64bdf43a;
+}
+
+div{
+    margin: auto auto 30px auto;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: white;
+    width: 1000px;
+ }
+
+.header{
+    font-size: 1.4rem;
+}
+
+.first{
+    border-top: 4px solid var(--blue);
+}
+
+.email_input{
+    font-size: 1.2rem;
+    height: 1.5rem;
+    width: 50%;
+}
+
+form{
+    text-align: right;
+}
+
+.button{
+    background-color: var(--blue);
+    border: none;
+    border-radius: 8px;
+    color:white;
+    padding: 3px;
+    width: 100px;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.op{
+    text-align: justify;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+
+
+/* *{
+    border: 1px solid #000;
+} */

@@ -260,12 +260,35 @@ class VoteController extends Controller
             ]);
             $i++;
         }
+        // recuperation des candidats
+        $candidats = [];
+        // foreach($votes as $item){
+
+        // }
+
+        // $candidats = Candidat::join('votes', 
+        //     'candidats.vote_id', '=', 'votes.id'
+        // )
+        // ->get(['candidats.*', Votant::where('vote_id', 'votes.id')->count() ])
+        // ->count('votes.id') ;
+        
+        $candidats_all = Candidat::all();
+
+
+        foreach($candidats_all as $item){
+            $tmp = count(Votant::where('vote_id', $item->vote_id)->get());
+            array_push($candidats, [
+                "nom" =>  $item->vote_id,
+                "nbre" => $tmp
+            ]);
+        }
 
         return view('vote.show', [
             'votes' =>$votes,
             'nbreVotes' => $nbreVotes,
-            'result' => $result
+            'result' => $result,
+            'candidats' => $candidats,
+            'candidats_all' => $candidats_all
         ]);
     }
-
 }

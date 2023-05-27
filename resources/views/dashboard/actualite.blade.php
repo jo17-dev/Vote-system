@@ -35,7 +35,12 @@
                         <i class="fa-solid fa-link"></i>
                     </div>
                     <div class="col-80">
-                        <h2>{{ $item->titre }}</h2> <p> Fin du vote ....</p> <hr>
+                        <h2>{{ $item->titre }}</h2> <p>
+                            debut:
+                            <strong>{{ $item->dateDebut }}</strong><br>
+                            Fin: 
+                            <strong>{{ $item->dateFin }}</strong>
+                        </p> <hr>
                         <!-- <h4>nouveau vote</h4>  -->
                         <!-- <p style="display: flex">Copier et envoyer le lien: <a href=""> {{ url('/dashboard/vote/'. hash('md2', $item->admin . $item->id) ) }} </a></p> -->
                         <p style="display: flex">Copier et envoyer le lien: <a href="{{ url('/dashboard/vote/' . $item->id) }}"> {{ url('/dashboard/vote/' . $item->id) }} </a></p>

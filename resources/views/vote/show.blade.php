@@ -67,38 +67,16 @@
             <div class="subject">
                 <div class="profil">
                     
-                    <img src="{{ asset('/img/avatar2.png') }}" alt="2nd avatar" width=250>
+                    <!-- <img src="{{ asset('/img/avatar2.png') }}" alt="2nd avatar" width=250> -->
                 </div>
                 <div class="data">
                 <table id="data">
+                    @forelse($candidats as $candidat)
                     <tr>
-                        <td>Martin</td>
-                        <td>10</td>
+                        <td>{{ $candidats_all[$candidat['nom']]['nom'] }}</td>
+                        <td>{{ $candidat['nbre'] }}</td>
                     </tr>
-                    <tr>
-                        <td>Abdoul</td>
-                        <td>8</td>
-                    </tr>
-                    <tr>
-                        <td>Rene</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>kengne</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <td>kamto</td>
-                        <td>32</td>
-                    </tr>
-                    <tr>
-                        <td>Anguissa</td>
-                        <td>18</td>
-                    </tr>
-                    <tr>
-                        <td>Rigobert</td>
-                        <td>2</td>
-                    </tr>
+                    @endforeach
                 </table>
                 </div> 
             </div>

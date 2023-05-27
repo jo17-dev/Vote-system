@@ -63,6 +63,7 @@ Route::middleware([AuthCheck::class])->group(function(){
         });
     
         Route::resource('/vote', VoteController::class);
+        Route::get('/sondage', [VoteController::class, 'sondage']);
     });
 });
 // ----------------------------------------------------------------------

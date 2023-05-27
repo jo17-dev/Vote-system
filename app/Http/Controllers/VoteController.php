@@ -230,8 +230,42 @@ class VoteController extends Controller
      */
     public function destroy($id)
     {
-        Vote::find($id)->delete(); // supression des votes
+        Candidat::where("vote_id" , $id)->delete();
+        Votant::where("vote_id" , $id)->delete();
 
-        Candidat::where('vote_id', $id)->delete();
+        Vote::find($id)->delete(); // supression du votes, des candidats et des votes
+
+
+        return redirect()->back("flash", "operation reussie");
     }
+// ====== Partie reservée au sondage
+
+    public function sondage(){
+        $votes = Vote::join('vote_casts',
+            'votes.id', '=', 'vote_casts.vote_id'
+        )->get(['votes.*', 'vote_casts.*']);
+
+        $votes = Vote::all();
+        $nbre_votes = Votant::all();
+        $nbreVotes = [];
+        foreach($votes as $item){
+            array_push($nbreVotes, count( Votant::where('vote_id', $item->id )->get() ));
+        }
+        $result = [];
+        $i = 0;
+        foreach($votes as $item){
+            array_push($result, [
+                $item->id,
+                $nbreVotes[$i]
+            ]);
+            $i++;
+        }
+
+        return view('vote.show', [
+            'votes' =>$votes,
+            'nbreVotes' => $nbreVotes,
+            'result' => $result
+        ]);
+    }
+
 }

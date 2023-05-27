@@ -6,7 +6,7 @@
     <a href="{{ url('/dashboard/actualite') }}">Actualite</a>
     <a href="{{ url('/dashboard/vote') }}">Vote simple</a>
     <a href="{{ url('/dashboard/person-vote') }}">Vote de candidat</a>
-    <a href="{{ url('/dashboard/vote/show') }}">Sondage de vote</a>
+    <a href="{{ url('/dashboard/sondage') }}">Sondage de votes</a>
     
 </div> 
 @endsection

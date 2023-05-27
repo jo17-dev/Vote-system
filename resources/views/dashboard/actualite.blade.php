@@ -37,11 +37,21 @@
                     <div class="col-80">
                         <h2>{{ $item->titre }}</h2> <p> Fin du vote ....</p> <hr>
                         <!-- <h4>nouveau vote</h4>  -->
-                        <p style="display: flex">Copier et envoyer le lien: <a href=""> {{ url('/dashboard/vote/'. hash('md2', $item->admin . $item->id) ) }} </a></p>
+                        <!-- <p style="display: flex">Copier et envoyer le lien: <a href=""> {{ url('/dashboard/vote/'. hash('md2', $item->admin . $item->id) ) }} </a></p> -->
+                        <p style="display: flex">Copier et envoyer le lien: <a href="{{ url('/dashboard/vote/' . $item->id) }}"> {{ url('/dashboard/vote/' . $item->id) }} </a></p>
                         <p> <a href="{{ url('/dashboard/vote/'. $item->id) }}">voir plus</a></p>
                     </div>
                 </div>
             </div>
+            @if( !empty(session('LoggedUser')) && session('LoggedUser.id') == $item->admin )
+                <div class="add">
+                    <form action="{{ url('/dashboard/vote/'. $item->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <input type="submit" value="Suprimmer" name="delete">
+                    </form>
+                </div>
+            @endif
         @endforeach
     </div>
 </div>

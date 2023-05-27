@@ -23,23 +23,27 @@
         <div class="sub-content">
             <!-- les diferrents sujets ou candidats de vote -->
             <div class="subject">
-                <div class="box" style="background-color: #f44336" >
+                <!-- <div class="box" style="background-color: #f44336" >
                     <div class="box-header">
                         <p>72</p>
                     </div>
                     <div class="box-footer">
                         <p> (titre) 1</p>
                     </div>
-                </div>
+                </div> -->
+                <?php $i=0; ?>
+                @forelse($votes as $item)
                 <div class="box" style="background-color: var(--blue)">
                     <div class="box-header">
-                        <p>48</p>
+                        <p> {{ $result[$i][1]}} </p>
+                        <?php $i++; ?>
                     </div>
                     <div class="box-footer">
-                        <p>   (titre) 2</p>
+                        <p> {{ $item->titre }} </p>
                     </div>
                 </div>
-                <div class="box" style="background-color: #009688">
+                @endforeach
+                <!-- <div class="box" style="background-color: #009688">
                     <div class="box-header">
                         <p>48</p>
                     </div>
@@ -54,7 +58,7 @@
                     <div class="box-footer">
                         <p>   (titre) 4</p>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="subject">

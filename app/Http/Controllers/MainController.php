@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Contracts\Service\Attribute\Required;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
@@ -43,6 +44,7 @@ class MainController extends Controller
         }
     }
 
+// validation des  donnees du formulaire de connexion  ---------------------------
 
     function check(Request $request){
         
@@ -51,7 +53,8 @@ class MainController extends Controller
             'email'=>'required|email',
             'password'=>'required|min:5|max:12'
         ]);
-
+        
+// verification des informations de connexion 
         $userInfo = User::where('email','=',$request->email)->first();
 
         if(!$userInfo){
@@ -78,18 +81,32 @@ class MainController extends Controller
             }else{
                 return back()->with('fail', 'Mot de passe Incorrect');
             }
-        }
+        } return back()->with('fail', 'Something went wrong !');
     }
  
+    // un logout customise
+    function logout(Request $request){
+
+        // Auth::logout();
+        // return redirect('/home');
+        if(session()->has('LoggedUser')){
+            session()->pull('loggedUser');
+            $request->session()->invalidate();
+            return redirect('/home');
+        }
+        return redirect('/sign');
+    }
+
+
     function dashboard(){
         $data = ['LoggedUser'=> User::where('id', session('LoggedUser'))->first()];
         return view('dashboard/index', $data);
     }
 
-    function logout(){
-        if(session()->has('LoggedUse')){
-            session()->pull('loggedUser');
-            return redirect('home/sign');
-        }
+    function profil(){
+        $data = ['LoggedUser'=> User::where('id','=', session('LoggedUser'))->first()];
+        return view('home.profil', $data);
     }
+
+    
 }

@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-
+use App\Http\Middleware\AuthCheck;
 use App\Http\Controllers\VoteController;
 use App\Http\Controllers\SondageController;
+use App\Http\Controllers\VoteInterfaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +26,18 @@ Route::get('/home/layout', function(){
     return view("home.layout");
 });
 
+// route de la navBar  -------------------------------------------
 
+Route::get("/home/profil", [MainController::class, 'profil'])->name('home.profil');
 
+<<<<<<< HEAD
 // les route ci desous sont juste des prototypes
 
 // Route::get("/dashboard",[MainController::class, 'dashboard'])->name('dashboard');
 
+=======
+// ---------------------------------------------------------------
+>>>>>>> walter
 
 // Routes a usage d'authentification -----------------------------------
 Route::get("/sign", [MainController::class, 'login']);
@@ -44,21 +51,58 @@ Route::post("/home/save", [MainController::class, 'save'])->name('home.save');
 
 Route::post("home/check", [MainController::class, 'check'])->name('home.check');
 
-Route::post("home/logout", [MainController::class, 'logout'])->name('home.logout');
+Route::get("home/logout", [MainController::class, 'logout'])->name('home.logout');
 
+Route::get("/dashboard",[MainController::class, 'dashboard'])->name('dashboard');
+// --------------------------------------------------------------------------
+
+// here we can use middleware for more security
+Route::middleware([AuthCheck::class])->group(function(){
+    
+    Route::prefix('/dashboard')->group(function(){
+
+        Route::get('/actualite', function(){
+            return view("dashboard.actualite");
+        });
+    
+        Route::resource('/vote', VoteController::class);
+    });
+});
 // ----------------------------------------------------------------------
 
 Route::prefix('/dashboard')->group(function(){
 
+<<<<<<< HEAD
     // Route::get('/', function(){
     //     return view("dashboard.index");
     // });
     Route::get("/",[MainController::class, 'dashboard'])->name('dashboard');
+=======
+//     Route::get('/', function(){
+//         return view("dashboard.index");
+//     });
+
+//     Route::get('/actualite', function(){
+//         return view("dashboard.actualite");
+//     });
+
+//     Route::resource('/vote', VoteController::class);
+// });
+    // Route::get('/', function(){
+    //     return view("dashboard.index");
+    // });
+>>>>>>> walter
 
     Route::get('/actualite', [VoteController::class, 'actualite']);
 
     Route::resource('/vote', VoteController::class);
     Route::get('/person-vote', [VoteController::class, 'person_vote_form']); // route pour le vote de candidat
+<<<<<<< HEAD
     
     // Route::get('/vote/{id}', [VoteController::class, 'voteInterface']);
 });
+=======
+});
+
+// Route::get("inter/{id}", [VoteInterfaceController::class, 'option']);
+>>>>>>> walter

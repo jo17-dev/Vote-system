@@ -8,10 +8,10 @@
 @section('nav-bar')
     @include('helpers.nav-bar')
 @endsection
-
 @section('side-bar')
     @include('helpers.side-bar')
 @endsection
+
 
 
 

@@ -8,8 +8,8 @@
         <div class="links">
             <ul>
                 <li> <a href="{{ url('dashboard/actualite') }}"> <i class="fa-solid fa-circle-info fa-xl"></i></a> </li>
-                <li> <a href="#"> <i class="fa fa-user fa-xl"></i> </a> </li>
-                <li> <a href="../index.php"> <i class="fa-solid fa-power-off fa-2xl"></i></a></li>
+                <li> <a href="{{ route('home.profil') }}"> <i class="fa fa-user fa-xl"></i> </a> </li>
+                <li> <a href="{{ route('home.logout') }}"> <i class="fa-solid fa-power-off fa-2xl"></i></a></li>
             </ul>
         </div>
     </div>

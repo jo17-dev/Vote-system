@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @yield('css')
     <link rel="stylesheet" href="{{ asset('/css/dashboard/all.css') }}">
+<<<<<<< HEAD
+    <link rel="stylesheet" href="{{ asset('/css/dashboard/style-dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/fontawesome/css/all.css') }}">
+=======
+    @yield('css')
+    <link rel="stylesheet" href="{{ asset('/css/dashboard/all.css') }}">
+>>>>>>> work-in-progress
     <title>My voice</title>
 </head>
 <body>

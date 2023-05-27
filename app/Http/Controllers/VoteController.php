@@ -188,7 +188,7 @@ class VoteController extends Controller
     public function update(Request $request, $id)
     {
         $validation = $request->validate([
-            'email'=> 'required'
+            'votant_email'=> 'required'
         ]);
 
         if(!$validation){ // si la validation n'est pas complete, retourner les messages
@@ -196,23 +196,30 @@ class VoteController extends Controller
         }
 
         $data = $request->all();
-        dd($data);
+        // dd($data);
 
         if( isset($data['choix']) ){
-            // Vote::create([
-            //     'vote_id' => $data['vote_id'],
-            //     'candidat_id' => $data['choix']
-            // ]);
 
-            $already_voted_info = Votant::where('vote_id', $data['vote_id'])->get(); // recuperer tout les 
+            $already_voted_info = Votant::where('vote_id', $data['vote_id'])->get(); // recuperer tout les user qui ont dejas voter
 
             foreach($already_voted_info as $item){
+                // si l'user qui a l'email courante a dejas voter, on le fait rentrer de page
                 if( strtolower($item->votant_email)  == strtolower($data['votant_email'])  ){
-                    $have_already_voted = true;
+                    // $have_already_voted = true;
+                    return redirect()->back()->with('message', "Vous ne pouvez pas voter deux fois");
                 }
             }
+            Votant::create([
+                'vote_id' => $data['vote_id'],
+                'candidat_id' => $data['choix'],
+                'votant_email' => $data['votant_email'],
+            ]);
 
-        } 
+            return redirect('/');
+
+        }else{
+            return redirect()->back()->with("message", "Veuillez selectionner exactement un choix");
+        }
     }
 
     /**

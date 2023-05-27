@@ -13,18 +13,23 @@
 </head>
 
 <body>
+
     <div class="header first">
         {{ $vote->titre; }}
     </div>
     <div class="header">
         {{ $vote->description; }}
     </div>
+        @if(isset($message))
+            <h1> {{ $message }} </h1>
+        @endif
 
     <div class="d2 first">
         <p>Pour quel choix optez vous ?</p>
         <form action="{{ url('/dashboard/vote/' . $vote->id ) }}" method="POST">
             @csrf
             @method('PUT')
+            <p class="op"><input type="email" name="votant_email" class="email_input" placeholder="Veuillez entrer votre email" required="required"></p>
             @forelse($cand as $c)
 
             <p class="op"><input type="radio" name="choix" value="{{ $c->id }}"> {{ $c->nom}} </p>

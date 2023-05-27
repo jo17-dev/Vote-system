@@ -27,7 +27,13 @@ div{
 .first{
     border-top: 4px solid var(--blue);
 }
-    
+
+.email_input{
+    font-size: 1.2rem;
+    height: 1.5rem;
+    width: 50%;
+}
+
 form{
     text-align: right;
 }

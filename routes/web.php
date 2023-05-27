@@ -30,14 +30,11 @@ Route::get('/home/layout', function(){
 
 Route::get("/home/profil", [MainController::class, 'profil'])->name('home.profil');
 
-<<<<<<< HEAD
 // les route ci desous sont juste des prototypes
 
 // Route::get("/dashboard",[MainController::class, 'dashboard'])->name('dashboard');
 
-=======
 // ---------------------------------------------------------------
->>>>>>> walter
 
 // Routes a usage d'authentification -----------------------------------
 Route::get("/sign", [MainController::class, 'login']);
@@ -72,12 +69,10 @@ Route::middleware([AuthCheck::class])->group(function(){
 
 Route::prefix('/dashboard')->group(function(){
 
-<<<<<<< HEAD
     // Route::get('/', function(){
     //     return view("dashboard.index");
     // });
     Route::get("/",[MainController::class, 'dashboard'])->name('dashboard');
-=======
 //     Route::get('/', function(){
 //         return view("dashboard.index");
 //     });
@@ -91,18 +86,14 @@ Route::prefix('/dashboard')->group(function(){
     // Route::get('/', function(){
     //     return view("dashboard.index");
     // });
->>>>>>> walter
 
     Route::get('/actualite', [VoteController::class, 'actualite']);
 
     Route::resource('/vote', VoteController::class);
     Route::get('/person-vote', [VoteController::class, 'person_vote_form']); // route pour le vote de candidat
-<<<<<<< HEAD
     
     // Route::get('/vote/{id}', [VoteController::class, 'voteInterface']);
 });
-=======
-});
+// });
 
 // Route::get("inter/{id}", [VoteInterfaceController::class, 'option']);
->>>>>>> walter

@@ -92,7 +92,7 @@ class MainController extends Controller
         if(session()->has('LoggedUser')){
             session()->pull('loggedUser');
             $request->session()->invalidate();
-            return redirect('/home');
+            return redirect('/');
         }
         return redirect('/sign');
     }

@@ -16,6 +16,7 @@ class Vote extends Model
         'titre',
         'description',
         'is_finished',
+        'dateDebut',
         'dateFin'
     ];
 }

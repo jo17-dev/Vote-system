@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-   <h1>Bienvenue... {{ $LoggedUser->nom }}, {{ $LoggedUser->email }}</h1>
+   <h1>Bienvenue... {{ $LoggedUser->nom }}</h1>
 
     <div class="container2">
    <!-- <button class="btn">  Nouveau scrutin </button> -->

@@ -27,25 +27,25 @@
             Pour vous connecter à votre compte, vous devez vous rendre sur la page d'accueil et cliquer <span class="special">Se Connecter</span> puis renseignez les différents champs par votre e-mail, mot de passe.
         </p>
 
-        <br><div class="screen"> <img src="" alt="Img1"> </div><br> <!-- image de connexion -->
+        <br><div class="screen"> <img src="{{ asset('/img/sign.png') }}" alt="Img1"> </div><br> <!-- image de connexion --><br>
 
         <p>
             Si vous ne disposez pas d'un compte vous pouvez en créé un en cliquant depuis la même page sur <span class="special"> S'INSCRIRE </span> et rensignez les différents champs.
         </p>
             
-        <br><div class="screen"> <img src="" alt="Img1"> </div><br> <!-- image d'inscription -->
+        <br><div class="screen"> <img src="{{ asset('/img/inscrip.png') }}" alt="Img1"> </div><br> <!-- image d'inscription --><br>
             
         <p>
             Après connexion vous pourrez choisissez l'option de vote qui vous convient puis informez les différents champs du titre du vote, des dates de début et fin, des options de vote ou des candidats[...] et cliquez sur <span class="special"> Submit </span>.
         </p>
             
-        <br><div class="screen"> <img src="" alt="Img1"> </div><br> <!-- image de vote -->
+        <br><div class="screen"> <img src="{{ asset('/img/vote.png') }}" alt="Img1"> </div><br> <!-- image de vote --><br>
             
         <p>
             Une fois cela fait, il sera mis à votre disposition un lien donnant directement sur la page de vote. Ce lien est destiné à être envoyé directement aux votants afin qu'il puissent faire leurs choix.
         </p>
 
-            <br><div class="screen"> <img src="" alt="Img1"> </div><br> <!-- image de lien de vote -->
+            <br><div class="screen"> <img src="{{ asset('/img/Annotation.png') }}" alt="Img1"> </div><br> <!-- image de lien de vote --><br>
         
         <p>
             -   Si vous avez choisi un vote ouvert à tous, alors nous vous conseillons de partager votre lien via Facebook, Twitter et tout autres réseaux sociaux afin qu'un maximum de votants puisse participer.
@@ -63,7 +63,7 @@
             Pour pouvoir voter il n'y a pour seul moyen que le lien. Un fois redirigé sur notre site par celui-ci, faites votre choix parmi les options proposées et tapez sur "Valider". 
         </p>
 
-        <br><div class="screen"> <img src="" alt="Img1"> </div><br> <!-- image de connexion -->
+        <br><div class="screen"> <img src="{{ asset('/img/choice.png') }}" alt="Img1"> </div><br> <!-- image de connexion --><br>
         
         <p>
             Une fois le vote effectuer, une confiramation de vote sera affichées et les dates de fin de vote et de sortit des résultats vous seront communiquées, il est possible que celles-ci coîncident. Les résultats seront consultables 20jours après leur sortie après quoi la page ne vote ne sera plus disponible, donc le lien plus valide.

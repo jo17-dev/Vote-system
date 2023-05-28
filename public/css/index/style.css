@@ -383,3 +383,7 @@ form .description{
 .copyright .copyright-text{
     width: 20%;
 }
+
+#contact, #a-propos, #nos-produits{
+    background-color: var(--backgroundColor);
+}

@@ -49,11 +49,11 @@
                 </div>
             </div>
             @if( !empty(session('LoggedUser')) && session('LoggedUser.id') == $item->admin )
-                <div class="add">
+                <div class="del">
                     <form action="{{ url('/dashboard/vote/'. $item->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <input type="submit" value="Suprimmer" name="delete">
+                        <input type="submit" value="Suprimer" name="delete" class="dell">
                     </form>
                 </div>
             @endif

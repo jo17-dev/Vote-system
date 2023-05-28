@@ -95,3 +95,8 @@ Route::prefix('/dashboard')->group(function(){
 // });
 
 // Route::get("inter/{id}", [VoteInterfaceController::class, 'option']);
+
+Route::get('/dashboard/documentation',function ()
+{
+    return view('home/documentation');
+})->name('docu');

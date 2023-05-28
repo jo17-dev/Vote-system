@@ -240,55 +240,83 @@ class VoteController extends Controller
     }
 // ====== Partie reservée au sondage
 
-    public function sondage(){
-        $votes = Vote::join('vote_casts',
-            'votes.id', '=', 'vote_casts.vote_id'
-        )->get(['votes.*', 'vote_casts.*']);
+    // public function sondage(){
+    //     $votes = Vote::join('vote_casts',
+    //         'votes.id', '=', 'vote_casts.vote_id'
+    //     )->get(['votes.*', 'vote_casts.*']);
 
-        $votes = Vote::all();
-        $nbre_votes = Votant::all();
-        $nbreVotes = [];
-        foreach($votes as $item){
-            array_push($nbreVotes, count( Votant::where('vote_id', $item->id )->get() ));
-        }
-        $result = [];
-        $i = 0;
-        foreach($votes as $item){
-            array_push($result, [
-                $item->id,
-                $nbreVotes[$i]
-            ]);
-            $i++;
-        }
-        // recuperation des candidats
-        $candidats = [];
-        // foreach($votes as $item){
-
-        // }
-
-        // $candidats = Candidat::join('votes', 
-        //     'candidats.vote_id', '=', 'votes.id'
-        // )
-        // ->get(['candidats.*', Votant::where('vote_id', 'votes.id')->count() ])
-        // ->count('votes.id') ;
+    //     $votes = Vote::all();
+    //     $nbre_votes = Votant::all();
+    //     $nbreVotes = [];
+    //     foreach($votes as $item){
+    //         array_push($nbreVotes, count( Votant::where('vote_id', $item->id )->get() ));
+    //     }
+    //     $result = [];
+    //     $i = 0;
+    //     foreach($votes as $item){
+    //         array_push($result, [
+    //             $item->id,
+    //             $nbreVotes[$i]
+    //         ]);
+    //         $i++;
+    //     }
+    //     // recuperation des candidats
+    //     $candidats = [];
         
-        $candidats_all = Candidat::all();
+    //     $candidats_all = Candidat::all();
 
 
-        foreach($candidats_all as $item){
-            $tmp = count(Votant::where('vote_id', $item->vote_id)->get());
-            array_push($candidats, [
-                "nom" =>  $item->vote_id,
-                "nbre" => $tmp
+    //     foreach($candidats_all as $item){
+    //         $tmp = count(Votant::where('vote_id', $item->vote_id)->get());
+    //         array_push($candidats, [
+    //             "nom" =>  $item->vote_id,
+    //             "nbre" => $tmp
+    //         ]);
+    //     }
+
+    //     return view('vote.show', [
+    //         'votes' =>$votes,
+    //         'nbreVotes' => $nbreVotes,
+    //         'result' => $result,
+    //         'candidats' => $candidats,
+    //         'candidats_all' => $candidats_all
+    //     ]);
+    // }
+
+    public function sondage(){
+
+        $candidats = Vote::join( 'candidats',
+            'votes.id', '=', 'candidats.vote_id'
+        )->where('admin', session('LoggedUser.id'))->get() ; // reucperai=tion des choix
+        $votes = Vote::where('admin', session('LoggedUser.id'))->get();   // recuperation des candidats
+
+        $cand = []; // infos a propos des canddats (choix)
+        $result_vote = []; // infos a propos des votes
+
+        foreach($candidats as $candidat){ // boucle sur chaque candidat avoir la combi nom-vote_id-nbreVote
+            array_push($cand, [
+                $candidat->nom,
+                $candidat->vote_id,
+                count(
+                    Votant::where('vote_id', $candidat->vote_id)->get()
+                )
             ]);
         }
+
+        foreach($votes as $vote){
+            array_push($result_vote, [
+                $vote,
+                count(
+                    Votant::where('vote_id', $vote->id)->get()
+                )
+            ]);
+        }
+
+        $result = [];
 
         return view('vote.show', [
-            'votes' =>$votes,
-            'nbreVotes' => $nbreVotes,
-            'result' => $result,
-            'candidats' => $candidats,
-            'candidats_all' => $candidats_all
+            'candidats' => $cand,
+            'votes' => $result_vote,
         ]);
     }
 }

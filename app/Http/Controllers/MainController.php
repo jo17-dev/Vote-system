@@ -92,6 +92,33 @@ class MainController extends Controller
         $data = ['LoggedUser'=> User::where('id','=', session('LoggedUser'))->first()];
         return view('home.profil', $data);
     }
-
     
+    function update(Request $request, $id){
+        
+        $request->validate([
+            'nom'=>'required',
+            'email'=>'required',
+            'oldPassword'=>'required'
+        ]);
+        
+        $user = User::find($id);
+        $user->nom = $request->input('nom');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request['newPassword']);
+        $userInfo = User::where('password','=',$request->oldPassword)->first();
+          $update = $user->update();
+
+        if($userInfo == $request->oldPassword){ 
+            
+            $update = $user->update();
+            
+            $data = ['LoggedUser'=> User::where('id','=', session('LoggedUser'))->first()];
+
+            return view('home.profil', $data)->with('success', "vos informations ont ete mis a jour avec succes!");
+            
+            }
+            return back()->with('fail', "Ouuups ".$userInfo."Une Erreur s'est produite veuillez remplir tous les champs!");
+            // return back()->with("sss".$request->input['newPassword']. "Nothing here ?");
+    }
+
 }

@@ -29,7 +29,8 @@ Route::get('/home/layout', function(){
 // route de la navBar  -------------------------------------------
 
 Route::get("/home/profil", [MainController::class, 'profil'])->name('home.profil');
-
+Route::put("/home/profil/{id}", [MainController::class, 'update'])->name('home.profil.update');
+// Route::put("/home/profil/{post}/", "MainController@update")->name('home.profil');
 // ---------------------------------------------------------------
 
 // Routes a usage d'authentification -----------------------------------

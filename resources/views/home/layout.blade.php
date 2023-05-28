@@ -49,7 +49,7 @@
                         </p>
                        
                         <div class="cta">
-                        <a href="#" class="btn">Commencer Maintenant</a>
+                        <a href="{{ url('/sign') }}" class="btn">Commencer Maintenant</a>
                         </div>
                     </div>
                     <div class="right">
@@ -65,7 +65,7 @@
             </div>
             <div class="section-body">
                 <div class="left">
-                    <img src="" alt="Deuxieme image">
+                    <img src="{{ asset('/img/undraw_real_time_sync_re_nky7(1).svg')}}" alt="Deuxieme image">
                 </div>
                 <div class="right right-side">
                     <div class="big-title">
@@ -77,7 +77,7 @@
                     </p>
                    
                     <div class="cta">
-                        <a href="#" class="btn-produit">Essayer le produit !</a>
+                        <a href="{{ url('/sign') }}" class="btn-produit">Essayer le produit !</a>
                     </div>
                 </div>
             </div>

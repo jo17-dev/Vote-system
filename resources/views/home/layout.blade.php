@@ -102,7 +102,7 @@
                         </div>
                         <div class="form-div">
                             <label for="email">Votre email</label>
-                            <input type="email" name="email" id="email" placeholder="exemplde@email.com">
+                            <input type="email" name="email" id="email" placeholder="exemplde@email.com" required>
                         </div>
                         <div class="form-div">
                             <label for="phone">Votre numéro de téléphone</label>
@@ -154,4 +154,5 @@
     </main>
 </body>
 <script src="./js/index.app.js"></script>
+<script src="asset('/js/sendEmail.js')"></script>
 </html>

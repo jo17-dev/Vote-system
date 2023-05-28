@@ -15,17 +15,6 @@ candidats_vote_id.forEach(item => { // initialisation des infos du premier vote
     }
 });
 
-// let a=0;
-// candidats_vote_id.forEach(item => {
-//     if(a == 0){
-//         item.parentNode.style.display = "none";
-//         a++;
-//     }
-//     else if(a == 1){
-//         a = 0;
-//     }
-// })
-
 
 vote_id.forEach( vote => {
     var pere = vote.parentNode;
@@ -43,40 +32,3 @@ vote_id.forEach( vote => {
 
     })
 });
-
-
-
-// vote_id.forEach(item => { // bourcles sur mes section d'en haut: un section d'en = un item
-//         function appel(){
-//             return parent.item;
-//         }
-//     item.parentNode.addEventListener("click", function(){ // on les ajoutes les evenements
-//         candidats_vote_id.forEach(test => {
-//             test.parentNode.style.display = "block";
-//         });
-
-//         candidats_vote_id.forEach( cand => {
-//             vote_id.forEach(vote => {
-//                 console.log("vote: "+vote.value+ " cand "+cand.value);
-//                 if(vote.value == cand.value){
-//                     cand.parentElement.style.display = "block";
-//                 }else{
-//                     cand.parentElement.style.display = "none";
-//                 }
-//             });
-
-
-//             // if(cand.value != appel().value){
-//             //     cand.parentNode.style.display = "none";
-//             //     console.log(cand.value);
-//             // }else{
-//             //     cand.parentNode.style.display = "block";
-//             // }
-//         })
-
-//         // vote_id.forEach(vote => {
-//         //     if()
-//         // })
-//     });
-// });
-

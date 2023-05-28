@@ -23,7 +23,7 @@
                         <ul>
                             <li><a href="#" style="--i:1">Acceuil</a></li>
                             <li><a href="#nos-produits" style="--i:3">Nos services</a></li>
-                            <li><a href="#contact" style="--i:4">contacts</a></li>
+                            <li><a href="#contact" style="--i:4">Contacts</a></li>
                             <li><a href="#a-propos" style="--i:2">A propos</a></li>
                             <li> <a href="{{ url('/sign') }}" class="btn">Se connecter</a> </li>
                         </ul>
@@ -57,8 +57,8 @@
                     </div>
                 </div>
             </div>
+            <br><br>
         </div>
-        <br><br>
         <div class="section" id="nos-produits">
             <div class="section-header">
                 <p class="stroke"></p><strong class="small-text">La simplicité</strong>
@@ -106,7 +106,7 @@
                         </div>
                         <div class="form-div">
                             <label for="phone">Votre numéro de téléphone</label>
-                            <input type="number" name="phone" id="phone" placeholder="Ex: 237 699 30 50 37">
+                            <input type="number" name="phone" id="phone" placeholder="Ex: +237 699 30 50 37">
                         </div>
                         <div class="form-div">
                             <label for="subject">Sujet</label>
@@ -122,8 +122,8 @@
                     </form>
                 </div>
             </div>
+            <br><br>
         </div>
-        <br><br>
         <div class="section" id="a-propos">
             <div class="section-header">
                 <p class="stroke"></p><strong class="small-text">A propos</strong>

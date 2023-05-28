@@ -18,13 +18,13 @@
         <div class="row">
                 <a href="{{ url('/dashboard/vote') }}"> 
                     <div class="box"> 
-                        <h4> creer un vote simple  </h4>
+                        <h4> Créer un vote simple  </h4>
                         <p> Prenez des descisions collectives en toute simplicite. </p>
                     </div>
                 </a>
                 <a href="{{ url('/dashboard/person-vote') }}">
                     <div class="box">
-                        <h4> Creer un vote de candidat</h4>
+                        <h4> Créer un vote de candidat</h4>
                         <p> Decidez du choix d'un representant par la democratie </p>
                     </div>
                 </a>

@@ -89,6 +89,7 @@ Route::prefix('/dashboard')->group(function(){
 
     Route::resource('/vote', VoteController::class);
     Route::get('/person-vote', [VoteController::class, 'person_vote_form']); // route pour le vote de candidat
+    Route::post('/person-vote', [VoteController::class, 'store']);
     
     // Route::get('/vote/{id}', [VoteController::class, 'voteInterface']);
 });

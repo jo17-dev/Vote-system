@@ -18,15 +18,22 @@
 @section('content')
 <div class="content">
     <div class="content-header">
-        <h2>Nommination</h2>
+        <h2>Vote de personnes:</h2>
     </div>
+    @if( isset($errors) )
+
+    <h3> erreru </h3>
+    @endif
     <div class="sub-content">
 
 
 <!-- formulaire de vote de candidat -->
 
 <div class="containers">
-    <form action="">
+    <form action="{{ url('/dashboard/vote') }}" method="POST">
+        @csrf 
+        @method('POST')
+        <input type="hidden" name="voteType" value="person">
     <div class="row">
         <div class="col-25">
             <label for="fname">Titre</label>
@@ -37,11 +44,11 @@
     </div>
     <div class="row">
         <div class="col-25">
-            <label for="lname">Date</label>
+            <label for="lname">Dates de debut et fin</label>
         </div>
         <div class="col-75">
-            <input type="date" id="lname" name="begin" placeholder="Your last name.." >
-            <input type="date" id="lname" name="end" placeholder="Your last name..">
+            <input type="date" id="lname" name="dateDebut" placeholder="Your last name.." >
+            <input type="date" id="lname" name="dateFin" placeholder="Your last name..">
         </div>
     </div>
     <div class="row">
@@ -49,7 +56,7 @@
             <label for="lname">Motivation</label>
         </div>
         <div class="col-75">
-        <input type="text" id="lname" name="motivation" placeholder="Motivation(s) du candidat">
+        <input type="text" id="lname" name="motivation_0" placeholder="Motivation(s) du candidat">
         </div>
     </div>
 
@@ -58,8 +65,8 @@
             <label for="lname">Candidats</label>
         </div>
         <div class="col-75">
-            <div id="cand"><input type="text" name="candidat[]" placeholder="nom du candidat.." ></div>
-            <input type="button" name="end" value="+ Ajouter" onclick="Add()" >
+            <div id="cand"><input type="text" name="candidat_0" placeholder="nom du candidat.." ></div>
+            <input type="button" name="end" value="+ Ajouter" onclick="Add('candidat')" >
             <input type="button" name="end" value="- Enlever" onclick="remove()" style="background: var(--red)">
         </div>
     </div>
@@ -74,7 +81,7 @@
 
     <br>
     <div class="row">
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" style="position: absolute; right: 1vw;">
     </div>
     </form>
 </div>

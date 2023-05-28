@@ -25,9 +25,9 @@
     <div class="sub-content">
 
         <div class="containers">
-            <form action="{{ url('/dashboard/vote') }}" method="POST">
+            <form action="{{ url('/dashboard/person-vote') }}" method="POST">
                 @csrf
-                @method('post')
+                @method('POST')
                 <input type="hidden" name="voteType" value="thing">
                 <div class="row">
                     <div class="col-25">
@@ -79,7 +79,7 @@
 
                 <br>
                 <div class="row">
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="Submit" style="position: absolute; right: 1vw;">
                 </div>
             </form>
         </div>

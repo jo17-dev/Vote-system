@@ -24,7 +24,7 @@
                 @forelse($votes as $item)
                 <div class="box" style="background-color: var(--blue)">
                     <div class="box-header">
-                        <p> {{ $item[1] }} </p>
+                        <p> {{ $item[1] }} votes au total </p>
                         <?php $i++; ?>
                     </div>
                     <div class="box-footer">

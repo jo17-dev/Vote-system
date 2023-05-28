@@ -63,8 +63,6 @@ class VoteController extends Controller
             'dateFin' => 'required'
         ]);
 
-        
-
         if($validation == true){ // si les données sont au complet
             $data = $request->all(); // recuperation des données
 
@@ -124,16 +122,17 @@ class VoteController extends Controller
                         $newCanddat = Candidat::create([
                             'vote_id' => $newVote->id,
                             'nom' => addslashes($candidats[$i]),
-                            'email' => addslashes($data[$i]['email']),
+                            // 'email' => addslashes($data[$i]['email']),
                             'is_human' => true,
                             'motivation' => addslashes($motivations[$i])
                         ]);
                     }
-                    return redirect('dashboard/actualite');
                     echo "Fin du vote de choix";
                 }
+                return redirect('dashboard/actualite');
             }else{
                 return redirect()->back()->with("flash", "Echec de l'operation, entrer des dates valides veuillez reessayer");
+                
             }
 
             if(!$newCanddat){
@@ -236,52 +235,10 @@ class VoteController extends Controller
         Vote::find($id)->delete(); // supression du votes, des candidats et des votes
 
 
-        return redirect()->back("flash", "operation reussie");
+        // return redirect()->back("flash", "operation reussie");
+        return VoteController::actualite();
     }
 // ====== Partie reservée au sondage
-
-    // public function sondage(){
-    //     $votes = Vote::join('vote_casts',
-    //         'votes.id', '=', 'vote_casts.vote_id'
-    //     )->get(['votes.*', 'vote_casts.*']);
-
-    //     $votes = Vote::all();
-    //     $nbre_votes = Votant::all();
-    //     $nbreVotes = [];
-    //     foreach($votes as $item){
-    //         array_push($nbreVotes, count( Votant::where('vote_id', $item->id )->get() ));
-    //     }
-    //     $result = [];
-    //     $i = 0;
-    //     foreach($votes as $item){
-    //         array_push($result, [
-    //             $item->id,
-    //             $nbreVotes[$i]
-    //         ]);
-    //         $i++;
-    //     }
-    //     // recuperation des candidats
-    //     $candidats = [];
-        
-    //     $candidats_all = Candidat::all();
-
-
-    //     foreach($candidats_all as $item){
-    //         $tmp = count(Votant::where('vote_id', $item->vote_id)->get());
-    //         array_push($candidats, [
-    //             "nom" =>  $item->vote_id,
-    //             "nbre" => $tmp
-    //         ]);
-    //     }
-
-    //     return view('vote.show', [
-    //         'votes' =>$votes,
-    //         'nbreVotes' => $nbreVotes,
-    //         'result' => $result,
-    //         'candidats' => $candidats,
-    //         'candidats_all' => $candidats_all
-    //     ]);
-    // }
 
     public function sondage(){
 

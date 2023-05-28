@@ -44,7 +44,7 @@
                         <!-- <h4>nouveau vote</h4>  -->
                         <!-- <p style="display: flex">Copier et envoyer le lien: <a href=""> {{ url('/dashboard/vote/'. hash('md2', $item->admin . $item->id) ) }} </a></p> -->
                         <p style="display: flex">Copier et envoyer le lien: <a href="{{ url('/dashboard/vote/' . $item->id) }}"> {{ url('/dashboard/vote/' . $item->id) }} </a></p>
-                        <p> <a href="{{ url('/dashboard/vote/'. $item->id) }}">voir plus</a></p>
+                        <p> <a href="{{ url('/dashboard/sondage') }}">voir plus</a></p>
                     </div>
                 </div>
             </div>

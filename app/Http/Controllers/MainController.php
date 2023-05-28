@@ -119,8 +119,6 @@ class MainController extends Controller
             }
             return back()->with('fail', "Ouuups ".$userInfo."Une Erreur s'est produite veuillez remplir tous les champs!");
             // return back()->with("sss".$request->input['newPassword']. "Nothing here ?");
-        
-        
     }
 
 }

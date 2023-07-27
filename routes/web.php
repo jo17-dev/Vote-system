@@ -60,6 +60,7 @@ Route::middleware([AuthCheck::class])->group(function(){
         });
     
         Route::resource('/vote', VoteController::class);
+        Route::get('/sondage', [VoteController::class, 'sondage']);
     });
 });
 // ----------------------------------------------------------------------
@@ -69,13 +70,33 @@ Route::prefix('/dashboard')->group(function(){
     // Route::get('/', function(){
     //     return view("dashboard.index");
     // });
+    Route::get("/",[MainController::class, 'dashboard'])->name('dashboard');
+//     Route::get('/', function(){
+//         return view("dashboard.index");
+//     });
 
-    Route::get('/actualite', function(){
-        return view("dashboard.actualite");
-    });
+//     Route::get('/actualite', function(){
+//         return view("dashboard.actualite");
+//     });
+
+//     Route::resource('/vote', VoteController::class);
+// });
+    // Route::get('/', function(){
+    //     return view("dashboard.index");
+    // });
+
+    Route::get('/actualite', [VoteController::class, 'actualite']);
 
     Route::resource('/vote', VoteController::class);
     Route::get('/person-vote', [VoteController::class, 'person_vote_form']); // route pour le vote de candidat
+    
+    // Route::get('/vote/{id}', [VoteController::class, 'voteInterface']);
 });
+// });
 
 // Route::get("inter/{id}", [VoteInterfaceController::class, 'option']);
+
+Route::get('/dashboard/documentation',function ()
+{
+    return view('home/documentation');
+})->name('docu');

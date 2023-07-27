@@ -1,4 +1,4 @@
-@extends('dashboard.layout')
+@extends('vote.layout')
 
 <!-- =========== chargemen du css la parage d'actualit -->
 @section('css')
@@ -28,33 +28,36 @@
     <div class="sub-content">
         <input type="text" name="search" class="search" placeholder="Search..">
 
-        <div class="journal">
-            <div class="rows">
-                <div class="col-15">
-                    <i class="fa-solid fa-link"></i>
+        @forelse($votes as $item)
+            <div class="journal">
+                <div class="rows">
+                    <div class="col-15">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                    <div class="col-80">
+                        <h2>{{ $item->titre }}</h2> <p>
+                            debut:
+                            <strong>{{ $item->dateDebut }}</strong><br>
+                            Fin: 
+                            <strong>{{ $item->dateFin }}</strong>
+                        </p> <hr>
+                        <!-- <h4>nouveau vote</h4>  -->
+                        <!-- <p style="display: flex">Copier et envoyer le lien: <a href=""> {{ url('/dashboard/vote/'. hash('md2', $item->admin . $item->id) ) }} </a></p> -->
+                        <p style="display: flex">Copier et envoyer le lien: <a href="{{ url('/dashboard/vote/' . $item->id) }}"> {{ url('/dashboard/vote/' . $item->id) }} </a></p>
+                        <p> <a href="{{ url('/dashboard/vote/'. $item->id) }}">voir plus</a></p>
+                    </div>
                 </div>
-            <div class="col-80">
-                <h2>Titre 1</h2> <p> en cours ...</p> <hr>
-                <h4>nouveau vote</h4> 
-                <p style="display: flex">Copier et envoyer le lien: <a href=""> https://lienVersLaPagedeVote</a></p>
-                <p> <a href="#">voir plus</a></p> 
             </div>
-            </div>
-        </div>
-
-        <div class="journal">
-            <div class="rows">
-                <div class="col-15">
-                    <i class="fa-solid fa-link"></i>
+            @if( !empty(session('LoggedUser')) && session('LoggedUser.id') == $item->admin )
+                <div class="del">
+                    <form action="{{ url('/dashboard/vote/'. $item->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <input type="submit" value="Suprimer" name="delete" class="dell">
+                    </form>
                 </div>
-            <div class="col-80">
-                <h2>Titre 2</h2> <p> Fin du vote ....</p> <hr>
-                <h4>nouveau vote</h4> 
-                <p style="display: flex">Copier et envoyer le lien: <a href=""> https://lienVersLaPagedeVote</a></p>
-                <p> <a href="#">voir plus</a></p> 
-            </div>
-            </div>
-        </div>
+            @endif
+        @endforeach
     </div>
 </div>
 @endsection

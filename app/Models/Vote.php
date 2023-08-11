@@ -14,6 +14,7 @@ class Vote extends Model
     protected $fillable = [
         'admin',
         'titre',
+        'voteType',
         'description',
         'is_finished',
         'dateDebut',

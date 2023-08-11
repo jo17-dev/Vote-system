@@ -61,15 +61,7 @@ class MainController extends Controller
             return back()->with('fail', 'Email incorrect');
         }else{
             if(HASH::check($request->password, $userInfo->password)){
-                // creattion de la session
-                // $request->session()->put('LoggedUser', $userInfo->Id);
-                // session('LoggedUser', $userInfo);
-                // $_SESSION['LoggedUser'] = [
-                //     $userInfo->id,
-                //     $userInfo->nom,
-                //     $userInfo->email
-                // ];
-
+               
                 session([
                     'LoggedUser' => [
                         'id' => $userInfo->id,
@@ -108,32 +100,27 @@ class MainController extends Controller
         return view('home.profil', $data);
     }
     
+    // modification des informations de l'utilisateur
     function update(Request $request, $id){
         
         $request->validate([
             'nom'=>'required',
             'email'=>'required',
-            'oldPassword'=>'required'
+            'newPassword'=>'required'
         ]);
         
         $user = User::find($id);
         $user->nom = $request->input('nom');
         $user->email = $request->input('email');
         $user->password = Hash::make($request['newPassword']);
-        $userInfo = User::where('password','=',$request->oldPassword)->first();
+        // $userInfo = User::where('password','=',$request->oldPassword)->first();
           $update = $user->update();
 
-        if($userInfo == $request->oldPassword){ 
-            
-            $update = $user->update();
-            
-            $data = ['LoggedUser'=> User::where('id','=', session('LoggedUser'))->first()];
+       
+            // $data = ['LoggedUser'=> User::where('id','=', session('LoggedUser'))->first()];
 
-            return view('home.profil', $data)->with('success', "vos informations ont ete mis a jour avec succes!");
-            
-            }
-            return back()->with('fail', "Ouuups ".$userInfo."Une Erreur s'est produite veuillez remplir tous les champs!");
-            // return back()->with("sss".$request->input['newPassword']. "Nothing here ?");
+            return back();
+               
     }
 
 }

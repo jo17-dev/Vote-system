@@ -18,12 +18,12 @@ class VoteController extends Controller
      */
     public function index()
     {
-        // cette methode seras utlisée plus tard l'ors de la creattion de la fil d'actualité
+        // cette methode seras utlisée plus tard lors de la creattion de la fil d'actualité
         return redirect("/dashboard/vote/create");
 
     }
 
-    // fonction sui vas permettre de gere l'actualite
+    // fonction suivante vas permettre de gerer l'actualite
     public function actualite(){
         $votes = Vote::where('admin', session('LoggedUser.id'))->get();
         return view("dashboard.actualite", [
@@ -55,10 +55,9 @@ class VoteController extends Controller
     public function store(Request $request)
     {   
         // $validation = true;
-
+        // validation des donnees du formulaire de vote simple
         $validation = $request->validate([
             'titre' => 'required|max:100',
-            'whyToDo' => 'max:100',
             'dateDebut' => 'required',
             'dateFin' => 'required'
         ]);
@@ -74,7 +73,7 @@ class VoteController extends Controller
         
             $user_data = session('LoggedUser');
 
-            foreach($data as $key => $item){ // recuperation séaparée des données
+            foreach($data as $key => $item){ // recuperation séparée des données
                 $is_candidat = stristr($key, 'candidat');
                 $is_motivation = stristr($key, 'motivation');
                 if($is_candidat){
@@ -86,51 +85,52 @@ class VoteController extends Controller
                 }
             }
             echo "candidats: " . count($candidats) . " motivations: " . count($motivations);
-
+            echo "<br>".$data['voteType'];
 
 
             // creation du vote + recuperer son ID
             $newVote = Vote::create([
                     'admin' => $user_data['id'],
+                    'voteType' => $data['voteType'],
                     'titre' => addslashes($data['titre']),
                     'description' => addslashes($data['subject']),
                     'dateDebut' => $data['dateDebut'],
                     'dateFin' => $data['dateFin']
-            ]);
+            ]); // enregistrement des donnees de vote dans la table vote
 
            echo $newVote->id;
-            // creation des candiats
+            // Enregistrement des candidats
                 // vote de choix
             $dateDebut = strtotime($data['dateDebut']) ;
             $dateFin = strtotime($data['dateFin']);
 
             echo $dateDebut;
             if($dateFin > $dateDebut ){
-                if($voteType != "person"){
+                if($voteType == 0 ){
                     for($i=0; $i< count($candidats); $i++ ){
                         $newCanddat = Candidat::create([
                             'vote_id' => $newVote->id,
                             'nom' => addslashes($candidats[$i]),
                             'is_human' => false,
                             'motivation' => $motivations[$i]
-                        ]);
+                        ]); //Enregistrement des candidats dans la table candidat
                     }
                     // return redirect() vers l'actualité
-                    echo "Fin du vote de choix";
+                    echo "<br>Fin du vote de choix";
                 }
                     // votes de personnes
-                if($voteType == "person"){
+                if($voteType == 1){
                     for($i=0; $i< count($candidats); $i++ ){
                         $newCanddat = Candidat::create([
                             'vote_id' => $newVote->id,
                             'nom' => addslashes($candidats[$i]),
-                            'email' => addslashes($data[$i]['email']),
+                            // 'email' => addslashes($data[$i]['email']),
                             'is_human' => true,
                             'motivation' => addslashes($motivations[$i])
                         ]);
                     }
                     return redirect('dashboard/actualite');
-                    echo "Fin du vote de choix";
+                    echo "<br>Fin du vote de choix";
                 }
             }else{
                 return redirect()->back()->with("flash", "Echec de l'operation, entrer des dates valides veuillez reessayer");
@@ -290,7 +290,7 @@ class VoteController extends Controller
         )->where('admin', session('LoggedUser.id'))->get() ; // reucperai=tion des choix
         $votes = Vote::where('admin', session('LoggedUser.id'))->get();   // recuperation des candidats
 
-        $cand = []; // infos a propos des canddats (choix)
+        $cand = []; // infos a propos des candidats (choix)
         $result_vote = []; // infos a propos des votes
 
         foreach($candidats as $candidat){ // boucle sur chaque candidat avoir la combi nom-vote_id-nbreVote

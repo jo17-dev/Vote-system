@@ -36,7 +36,7 @@
                      <p> visitez tous les votes en cour.  </p>
                 </div>
             </a>
-            <a href="{{ url('/dashboard/vote/person-vote') }}">
+            <a href="{{ url('/dashboard/sondage') }}">
                 <div class="box">
                      <h4> Sondage </h4>
                      <p> visitez les sondage des votes en cour </p>

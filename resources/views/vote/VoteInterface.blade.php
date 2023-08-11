@@ -15,28 +15,28 @@
 <body>
 
     <div class="header first">
-        {{ $vote->titre; }}
+        {{ //$vote->titre; }}
     </div>
     <div class="header">
-        {{ $vote->description; }}
+        {{ //$vote->description; }}
     </div>
-        @if(isset($message))
-            <h1> {{ $message }} </h1>
-        @endif
+       // @if(isset($message))
+            <h1> {{ //$message }} </h1>
+        //@endif
 
     <div class="d2 first">
         <p>Pour quel choix optez vous ?</p>
         <form action="{{ url('/dashboard/vote/' . $vote->id ) }}" method="POST">
             @csrf
             @method('PUT')
-            <p class="op"><input type="email" name="votant_email" class="email_input" placeholder="Veuillez entrer votre email" required="required"></p>
-            @forelse($cand as $c)
+                <p class="op"><input type="email" name="votant_email" class="email_input" placeholder="Veuillez entrer votre email" required="required"></p>
+            //@forelse($cand as $c)
 
-            <p class="op"><input type="radio" name="choix" value="{{ $c->id }}"> {{ $c->nom}} </p>
+                <p class="op"><input type="radio" name="choix" value="{{ $c->id }}"> {{ $c->nom}} </p>
 
-            <?php $i++; ?>
+                <?php $i++; ?>
 
-            @endforeach
+            //@endforeach
             <input type="hidden" name="vote_id" value="{{ $vote->id }}">
 
             <!-- <p class="op"><input type="radio" name="candidat" value="null"> Vote blanc </p> -->

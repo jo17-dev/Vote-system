@@ -55,14 +55,13 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Mettre a jour les informations du compte</h2>
+
             <form action="{{ url('home/profil/'.$LoggedUser->id) }}" method="POST">
                 {{ @csrf_field() }}
                 @method('PUT')
                 <input type="text" id="fname" name="nom"  placeholder="{{ $LoggedUser['nom'] }}" >
 
                 <input type="email" class="mail" id="lname" name="email"  placeholder="{{ $LoggedUser['email'] }}">
-
-                <input type="text" id="lname" name="oldPassword" value="" placeholder=" Votre ancien mot de passe .. ">
 
                 <input type="text" id="lname" name="newPassword" placeholder=" Votre nouveau mot de passe ..">
   
@@ -94,9 +93,9 @@
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     } 
 </script>
 </html>

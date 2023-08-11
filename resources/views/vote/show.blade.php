@@ -41,7 +41,7 @@
             <div class="subject">
                 <div class="profil">
                     
-                    <!-- <img src="{{ asset('/img/avatar2.png') }}" alt="2nd avatar" width=250> -->
+                    <img src="{{ asset('/img/avatar2.png') }}" alt="2nd avatar" width=250>
                 </div>
                 <div class="data">
                 <table id="data">
@@ -56,26 +56,26 @@
                 </div> 
             </div>
             <div class="subject">
-                <!-- <p>Statistiques Generale</p> -->
+                <p>Statistiques Generale</p>
             </div>
-<!--             <div class="box2">
+            <div class="box2">
             <p class="etat">vote positif</p>
- -->            <!-- <progress value="25" max="100"> 25% </progress> -->
+            <!-- <progress value="25" max="100"> 25% </progress> -->
 
             <!-- ici les bars de progressions  -->
-<!--             <div class="progress">
+            <div class="progress">
                 <div class="bar" style=" width:25%"><p>25%</p></div>
             </div>
- -->            <!-- <p class="etat">vote neutre</p> -->
-            <!-- <div class="progress">
+            <!-- <p class="etat">vote neutre</p>
+             <div class="progress">
                 <div class="bar" style="background: #ff9800; width:50%"><p>50%</p></div>
             </div> -->
-<!--             <p class="etat">vote negatif</p>
+            <p class="etat">vote negatif</p>
             <div class="progress" >
                 <div class="bar" style="background: #f44336; width:75%"><p>75%</p></div>
             </div>
             </div>
- -->
+
             <div class="subject">
             <p>Resultat finale du vote (titre)</p>
             </div>
@@ -91,7 +91,7 @@
                 </table>
             </div>
             <div class="subject">
-            <p>Echeance avant la fin des votes</p> <br> <?php  echo"<p>".date("y-m-d")."</p>"; ?>
+                <p>Echeance avant la fin des votes</p> <br> <?php  echo"<p>".date("y-m-d")."</p>"; ?>
             </div>
         </div>
 </div>

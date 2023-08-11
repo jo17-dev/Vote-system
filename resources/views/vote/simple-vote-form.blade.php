@@ -28,32 +28,35 @@
             <form action="{{ url('/dashboard/vote') }}" method="POST">
                 @csrf
                 @method('post')
-                <input type="hidden" name="voteType" value="thing">
+                <input type="hidden" name="voteType" value=0>
+                
                 <div class="row">
                     <div class="col-25">
                         <label for="fname">Titre</label>
                     </div>
                     <div class="col-75">
-                    <input type="text" id="fname" name="titre"  placeholder="titre du vote..">
+                        <input type="text" id="fname" name="titre"  placeholder="titre du vote..">
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-25">
                         <label for="lname">Objectifs</label>
                     </div>
                     <div class="col-75">
-                    <input type="text" id="lname" name="whyToDo" placeholder="Pourquoi faire ce vote ?">
+                        <input type="text" id="lname" name="whyToDo" placeholder="Pourquoi faire ce vote ?">
                     </div>
-                </div>
+                </div> -->
+
                 <div class="row">
                     <div class="col-25">
                         <label for="lname">Date de debut et fin</label>
                     </div>
                     <div class="col-75">
-                    <input type="date" id="lname" name="dateDebut" placeholder="Your last name.." >
-                    <input type="date" id="lname" name="dateFin" placeholder="Your last name..">
+                        <input type="date" id="lname" name="dateDebut" placeholder="Your last name..">
+                        <input type="date" id="lname" name="dateFin" placeholder="Your last name..">
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-25">
                         <label for="lname">Choix, </label>
@@ -68,6 +71,7 @@
                         <input type="button" name="end" value="- Enlever" onclick="/*remove('candidat');*/remove('motivation');" style="background: var(--red)">
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-25">
                     <label for="subject">Description</label>

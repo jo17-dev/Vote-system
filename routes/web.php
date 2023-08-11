@@ -26,12 +26,16 @@ Route::get('/home/layout', function(){
     return view("home.layout");
 });
 
+
+
 // route de la navBar  -------------------------------------------
 
 Route::get("/home/profil", [MainController::class, 'profil'])->name('home.profil');
 Route::put("/home/profil/{id}", [MainController::class, 'update'])->name('home.profil.update');
 // Route::put("/home/profil/{post}/", "MainController@update")->name('home.profil');
 // ---------------------------------------------------------------
+
+
 
 // Routes a usage d'authentification -----------------------------------
 Route::get("/sign", [MainController::class, 'login']);
@@ -40,7 +44,7 @@ Route::get("/sign", [MainController::class, 'register'])->name('home.signin-sign
 
 Route::resource('/vote', VoteController::class);
 
-// });
+//----------------------------------------------------------------------
 Route::post("/home/save", [MainController::class, 'save'])->name('home.save');
 
 Route::post("home/check", [MainController::class, 'check'])->name('home.check');
@@ -51,7 +55,7 @@ Route::get("/dashboard",[MainController::class, 'dashboard'])->name('dashboard')
 // --------------------------------------------------------------------------
 
 // here we can use middleware for more security
-Route::middleware([AuthCheck::class])->group(function(){
+//Route::middleware([AuthCheck::class])->group(function(){
     
     Route::prefix('/dashboard')->group(function(){
 
@@ -62,41 +66,30 @@ Route::middleware([AuthCheck::class])->group(function(){
         Route::resource('/vote', VoteController::class);
         Route::get('/sondage', [VoteController::class, 'sondage']);
     });
-});
+//});
 // ----------------------------------------------------------------------
 
 Route::prefix('/dashboard')->group(function(){
 
-    // Route::get('/', function(){
-    //     return view("dashboard.index");
-    // });
+
     Route::get("/",[MainController::class, 'dashboard'])->name('dashboard');
-//     Route::get('/', function(){
-//         return view("dashboard.index");
-//     });
 
-//     Route::get('/actualite', function(){
-//         return view("dashboard.actualite");
-//     });
-
-//     Route::resource('/vote', VoteController::class);
+//Route::resource('/vote', VoteController::class);
 // });
-    // Route::get('/', function(){
-    //     return view("dashboard.index");
-    // });
 
-    Route::get('/actualite', [VoteController::class, 'actualite']);
+
+    Route::get('/actualite', [VoteController::class, 'actualite']); // route vers la vue des actualites 
 
     Route::resource('/vote', VoteController::class);
     Route::get('/person-vote', [VoteController::class, 'person_vote_form']); // route pour le vote de candidat
     
-    // Route::get('/vote/{id}', [VoteController::class, 'voteInterface']);
+    Route::get('/vote/{id}', [VoteController::class, 'voteInterface']);
 });
 // });
 
-// Route::get("inter/{id}", [VoteInterfaceController::class, 'option']);
+//Route::get("inter/{id}", [VoteInterfaceController::class, 'option']);
 
 Route::get('/dashboard/documentation',function ()
 {
     return view('home/documentation');
-})->name('docu');
+})->name('docu'); // route pour acceder a la documentation.

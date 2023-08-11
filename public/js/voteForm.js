@@ -1,4 +1,4 @@
-var numCandidat = 1; // variable qui vas permettre d'e changer le nom du candidat
+var numCandidat = 1; // variable qui vas permettre d'echanger le nom du candidat
 var nbreFois = 0; // utilité
 
 
@@ -17,9 +17,9 @@ function Add(nom){
 
         // On change le placeholder en fcontion du name input et on ajoute aux tableaux concernés
         if(nom == "candidat"){
-            newField.placeholder = "nom du choix..";
+            newField.placeholder = "Nom ..";
         }else{
-            newField.placeholder = "Motivation du candidat";
+            newField.placeholder = "Motivation ";
         }
     
         cand.append(newField);
